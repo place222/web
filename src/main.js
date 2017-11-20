@@ -10,6 +10,8 @@ import jQuery from "jquery"
 import "bootstrap/js/bootstrap.min.js"
 import "adminlte/js/adminlte.js"
 import "bootstrap/css/bootstrap.min.css"
+import "@/assets/css/font-awesome.css"
+import "@/assets/css/ionicons.css"
 import 'adminlte/css/AdminLTE.css'
 import "adminlte/css/skins/skin-blue.css"
 /* eslint-disable no-new */
