@@ -1,7 +1,8 @@
 # web
 
 > A Vue.js project
-
+##
+主要是想把adminlte模板整个迁移到vue上，组件参考element-ui
 ## Build Setup
 
 ``` bash
