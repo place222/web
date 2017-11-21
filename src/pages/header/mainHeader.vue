@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="less">
+//初始化一些公用函数变量
 @import "../../less/common.less";
 /*
  * Component: Main Header

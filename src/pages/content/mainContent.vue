@@ -14,10 +14,10 @@
 
     <!-- Main content -->
     <section class="content container-fluid">
-
-      <!--------------------------
+        <!--------------------------
         | Your Page Content Here |
         -------------------------->
+      <alert dismissable="true" title="传入标题" alerttype="1"></alert>
 
     </section>
     <!-- /.content -->
@@ -25,8 +25,12 @@
 </template>
 
 <script>
+import Alert from "@/components/alert/Alert";
 export default {
-  name: "mainContent"
+  name: "mainContent",
+  components: {
+    Alert
+  }
 };
 </script>
 

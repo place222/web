@@ -8,3 +8,15 @@
         <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
     </footer>
 </template>
+
+
+
+<style lang="less">
+@import "../../less/common.less";
+.main-footer {
+  background: #fff;
+  padding: 15px;
+  color: #444;
+  border-top: 1px solid @gray-lte;
+}
+</style>

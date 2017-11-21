@@ -5,15 +5,15 @@
 </template>
 
 <script>
-
 export default {
   name: "app",
-  created(){
-    $('body').addClass('hold-transition skin-blue sidebar-mini')
+  created() {
+    $("body").addClass("hold-transition skin-blue sidebar-mini");
   }
 };
 </script>
 
-<style>
-
+<style lang="less">
+@import "less/less/AdminLTE.less";
 </style>
+

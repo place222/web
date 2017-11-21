@@ -5,15 +5,19 @@ import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
+
 //启动注入jquery和bootstrap的支持
-import jQuery from "jquery"
-import "bootstrap/js/bootstrap.min.js"
+//逐步替换成vue组件
+import $ from "jquery"
+import "bootstrap/js/bootstrap.js"
 import "adminlte/js/adminlte.js"
-import "bootstrap/css/bootstrap.min.css"
+//等待替换
+import "bootstrap/css/bootstrap.css"
 import "@/assets/css/font-awesome.css"
 import "@/assets/css/ionicons.css"
-import 'adminlte/css/AdminLTE.css'
+//皮肤
 import "adminlte/css/skins/skin-blue.css"
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
