@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 //启动注入jquery和bootstrap的支持
 //逐步替换成vue组件
 import $ from "jquery"
-import "bootstrap/js/bootstrap.js"
+//import "bootstrap/js/bootstrap.js"
 import "adminlte/js/adminlte.js"
 //等待替换
 import "bootstrap/css/bootstrap.css"
