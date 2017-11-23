@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Message from '@/components/message/main.js'
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,8 @@ import "@/assets/css/font-awesome.css"
 import "@/assets/css/ionicons.css"
 //皮肤
 import "adminlte/css/skins/skin-blue.css"
+
+Vue.prototype.$message = Message
 
 /* eslint-disable no-new */
 new Vue({
