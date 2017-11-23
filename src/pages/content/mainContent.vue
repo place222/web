@@ -17,33 +17,21 @@
         <!--------------------------
         | Your Page Content Here |
         -------------------------->
-      <alert dismissable="true" title="传入标题" alerttype="1"></alert>
-      <callout title="传入标题">
-         <p>哈哈</p>
-      </callout>
+        <router-view></router-view>
+
     </section>
-
-    <dropdown :is-open="false">
-
-    </dropdown>
-    <!-- /.content -->
-    <life></life>
   </div>
 </template>
 
 <script>
-import Alert from "@/components/alert/Alert";
-import Callout from "@/components/callout/Callout";
-import Dropdown from "@/components/dropdown/Dropdown";
+//生命周期的测试
 import Life from "@/components/Life";
 export default {
   name: "mainContent",
   components: {
-    Alert,
-    Callout,
-    Dropdown,
     Life
-  }
+  },
+  methods: {}
 };
 </script>
 

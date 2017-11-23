@@ -32,19 +32,23 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-        <li class="treeview">
+
+        <li v-for="item in items" :key="item.id" @click="menuSelected(item.id)" :class="selected==item.id?'active':''">
+            <router-link :to="item.path" class="fa fa-link">{{item.name}}</router-link>
+        </li>
+        <!-- <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
+
           <ul class="treeview-menu">
             <li><a href="#">Link in level 2</a></li>
             <li><a href="#">Link in level 2</a></li>
           </ul>
-        </li>
+
+        </li> -->
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -54,7 +58,21 @@
 
 <script>
 export default {
-  name: "mainSidebar"
+  name: "mainSidebar",
+  data() {
+    return {
+      selected: 1,
+      items: [
+        { id: 1, path: "/alert/index", name: "弹出框" },
+        { id: 2, path: "/dropdown/index", name: "下拉菜单" }
+      ]
+    };
+  },
+  methods: {
+    menuSelected: function(id) {
+      this.selected = id;
+    }
+  }
 };
 </script>
 

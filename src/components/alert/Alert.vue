@@ -27,7 +27,7 @@ export default {
     alerttype: {
       type: String,
       default: 1
-    } 
+    }
   },
   computed: {
     alertClass: function() {

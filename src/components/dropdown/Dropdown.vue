@@ -1,66 +1,70 @@
 <template>
     <div class="dropdown" :class="open?'open':''">
-      <dropdown-toggle @toggleclick="toggle" :toggle-title="toggleTitle"></dropdown-toggle>
-      <transition name="menu">
-        <dropdown-menu v-if="open" :items="items"></dropdown-menu>
-      </transition>
+
+      <slot name="toggle"></slot>
+
+      <slot name="menu"></slot>
+
     </div>
 </template>
 
 <script>
-import DropdownMenu from "./DropdownMenu";
-import DropdownToggle from "./DropdownToggle";
-
+import sayHello from "@/mixins/sayHello";
+import DropdownToggle from "@/components/dropdown/DropdownToggle";
 export default {
+  componentName: "DropDown",
   components: {
-    DropdownMenu,
     DropdownToggle
+  },
+  mixins: [sayHello], //继承得扩展方法
+  provide() {
+    //提供一个可被子组件注入拿到的属性
+    return {
+      dropdown: this
+    };
   },
   data() {
     return {
-      timeout: null,
-      open: this.isOpen,
-      items: [{ text: "嘿嘿", href: "http://www.baidu.com" }]
+      delay: 250,
+      open: false,
+      timeout: null
     };
   },
-  props: {
-    toggleTitle: {
-      default: "标题"
-    },
-    isOpen: {
-      default: false
-    }
-  },
+  props: {},
   methods: {
-    toggle: function() {
+    show: function() {
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
-        this.open = !this.open;
-      }, 500);
+        this.open = true;
+      }, this.delay);
+    },
+    hide: function() {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.open = false;
+      }, this.delay);
     }
   },
-  watch: {
-    isOpen(val) {
-      this.open = val;
-    },
-    open(val) {
-      this.$emit("open-state-change", val);
-    }
+  watch: {},
+  created: function() {
+    //注册通知的事件处理程序
+    this.$on("dropdown-item-click", function(command) {
+      this.$emit("command", command);
+    });
+    this.$on("dropdown-toggle-click", function() {
+      this.open = !this.open;
+    });
   },
   mounted: function() {
-    let { toggle } = this;
-    this.$el.addEventListener("mouseleave", toggle);
+    //做hover的支持
+    if (this.$slots.toggle) {
+      this.$slots.toggle[0].elm.addEventListener("mouseenter", this.show);
+      this.$slots.toggle[0].elm.addEventListener("mouseleave", this.hide);
+    }
+    if (this.$slots.menu) {
+      this.$slots.menu[0].elm.addEventListener("mouseenter", this.show);
+      this.$slots.menu[0].elm.addEventListener("mouseleave", this.hide);
+    }
   }
 };
 </script>
-
-<style lang="less">
-.menu-enter-active,
-.menu-leave-active {
-  transition: opacity 0.5s;
-}
-.menu-enter,
-.menu-leave-to {
-  opacity: 0;
-}
-</style>

@@ -2,26 +2,23 @@
   <button
   class="btn btn-default dropdown-toggle"
   type="button"
-  id="dropdownMenu1"
-  data-toggle="dropdown"
-  aria-haspopup="true"
-  aria-expanded="true"
-  @click="toggleClick">
-    {{toggleTitle}}
+  @click="handleClick">
+    <slot></slot>
     <span class="caret"></span>
   </button>
 </template>
 
 
 <script>
+import emitter from "@/mixins/emitter";
 export default {
-  props: {
-    toggleTitle: ""
-  },
+  props: {},
+  mixins: [emitter],
   methods: {
-    toggleClick: function() {
-      this.$emit("toggleclick");
+    handleClick: function() {
+      this.dispatch("DropDown", "dropdown-toggle-click");
     }
   }
 };
 </script>
+
