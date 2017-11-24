@@ -9,7 +9,7 @@
 </template>
 
 
-<script type="text/babel">
+<script>
 export default {
   data: function() {
     return {
@@ -27,13 +27,13 @@ export default {
     }
   },
   watch: {
-    // show(val) {
-    //   if (val === true) {
-    //     this.timeout = setTimeout(() => {
-    //       this.show = !this.show;
-    //     }, 2000);
-    //   }
-    // }
+    show(val) {
+      if (val == true) {
+        this.timeout = setTimeout(() => {
+          this.show = !this.show;
+        }, 2000);
+      }
+    }
   },
   computed: {
     alertClass: function() {
@@ -64,6 +64,7 @@ export default {
 .message {
   width: 300px;
   position: absolute;
+  z-index: 2000;
   left: 50%;
   top: 100px; //这个是我们最终的位置
   margin-left: -150px;

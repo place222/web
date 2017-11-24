@@ -13,7 +13,7 @@ import "@/assets/css/ionicons.css"
 import $ from "jquery"
 import "bootstrap/js/bootstrap.js"
 import "adminlte/js/adminlte.js"
-
+//注册组件
 export default {
   name: "app",
   created() {

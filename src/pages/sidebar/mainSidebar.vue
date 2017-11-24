@@ -61,11 +61,13 @@ export default {
   name: "mainSidebar",
   data() {
     return {
-      selected: 1,
+      selected: 0,
       items: [
+        { id: 0, path: "/layout/index", name: "布局" },
         { id: 1, path: "/alert/index", name: "弹出框" },
         { id: 2, path: "/dropdown/index", name: "下拉菜单" },
         { id: 3, path: "/message/index", name: "消息框" },
+        { id: 4, path: "/form/index", name: "表单" },
       ]
     };
   },
