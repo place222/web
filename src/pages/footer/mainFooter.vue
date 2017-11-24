@@ -11,12 +11,6 @@
 
 
 
-<style lang="less">
-@import "../../less/common.less";
-.main-footer {
-  background: #fff;
-  padding: 15px;
-  color: #444;
-  border-top: 1px solid @gray-lte;
-}
+<style lang="less" scoped>
+
 </style>

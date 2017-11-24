@@ -23,14 +23,11 @@ export default {
     levelClass: function() {
       return `callout-${this.calloutLevel}`;
     }
-  },
-  created: function() {
-    console.log(this);
   }
 };
 </script>
 <style lang="less">
-@import "../../less/common.less";
+@import "../../less/new_less/common.less";
 /*
  * Component: Callout
  * ------------------

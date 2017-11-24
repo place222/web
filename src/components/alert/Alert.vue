@@ -55,14 +55,14 @@ export default {
 
 
 <style lang="less">
-@import "../../less/common.less";
-/*
- * Component: alert
- * ----------------
- */
+@import "../../less/new_less/common.less";
+@padding: 10px;
 
 .alert {
   .border-radius(3px);
+  padding: @padding;
+  max-height: 80px;
+  margin-bottom: 20px;
   h4 {
     font-weight: 600;
   }
@@ -76,13 +76,8 @@ export default {
       .opacity(0.5);
     }
   }
-  a {
-    color: #fff;
-    text-decoration: underline;
-  }
 }
 
-//Alert Variants
 .alert-success {
   &:extend(.bg-green);
   border-color: darken(@green, 5%);

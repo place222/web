@@ -2,7 +2,7 @@
       <dropdown @command="dropDownCommand">
         <dropdown-toggle slot="toggle">下拉菜单</dropdown-toggle>
         <dropdown-menu slot="menu">
-          <dropdown-menu-item :is-title="true"><a href="#">1</a></dropdown-menu-item>
+          <dropdown-menu-item :is-title="true">1</dropdown-menu-item>
           <dropdown-menu-item :is-separator="true">2</dropdown-menu-item>
           <dropdown-menu-item :disabled="true"><a href="#">3</a></dropdown-menu-item>
           <dropdown-menu-item command="haha"><a href="#">1</a></dropdown-menu-item>

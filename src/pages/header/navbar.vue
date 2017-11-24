@@ -161,10 +161,24 @@
 import imageurl from "@/assets/adminlte/img/user2-160x160.jpg";
 
 export default {
-  data(){
+  data() {
     return {
-      imageurl:imageurl
-    }
+      imageurl: imageurl
+    };
+  }
+};
+</script>
+
+<style lang="less">
+.label {
+  &.label-success {
+    background-color: #00a65a !important;
+  }
+  &.label-warning {
+    background-color: #f39c12 !important;
+  }
+  &.label-danger {
+    background-color: #dd4b39 !important;
   }
 }
-</script>
+</style>

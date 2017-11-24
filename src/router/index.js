@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/pages/index'
 import dropDown from '@/pages/content/dropDown'
 import alert from '@/pages/content/alert'
+import message from '@/pages/content/message'
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +31,15 @@ export default new Router({
       path: 'index',
       name: 'main',
       component: alert
+    }]
+  }, {
+    path: '/message',
+    name: 'Message',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: message
     }]
   }]
 })
