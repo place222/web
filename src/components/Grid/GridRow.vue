@@ -5,10 +5,17 @@ export default {
       type: String,
       default: "div"
     },
-    type: String
+    type: String,
+    gutter: {
+      type: Number
+    }
   },
   render(h) {
-    return h(this.tag, { class: ["layout"] }, this.$slots.default);
+    return h(
+      this.tag,
+      { class: ["layout"]},
+      this.$slots.default
+    );
   }
 };
 </script>
@@ -17,6 +24,5 @@ export default {
 <style lang="less" scoped>
 .layout {
   display: flex;
-  border: 1px solid gray;
 }
 </style>

@@ -1,23 +1,12 @@
 <template>
-  <div class="wrapper">
+  <div>
     <!-- Main Header -->
     <main-header></main-header>
-    <!-- Left side column. contains the logo and sidebar -->
+
     <main-sidebar></main-sidebar>
 
-    <!-- Content Wrapper. Contains page content -->
-    <main-content></main-content>
-    <!-- /.content-wrapper -->
+    <main-content class="container"></main-content>
 
-    <!-- Main Footer -->
-    <main-footer></main-footer>
-
-    <!-- Control Sidebar -->
-    <control-sidebar></control-sidebar>
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
   </div>
 </template>
 
@@ -26,15 +15,19 @@ import mainHeader from "@/pages/header/mainHeader";
 import mainSidebar from "@/pages/sidebar/mainSidebar";
 import mainContent from "@/pages/content/mainContent";
 import mainFooter from "@/pages/footer/mainFooter";
-import controlSidebar from "@/pages/sidebar/controlSidebar";
 
 export default {
   components: {
     mainHeader,
     mainSidebar,
     mainContent,
-    mainFooter,
-    controlSidebar
+    mainFooter
   }
 };
 </script>
+
+<style lang="less" scoped>
+.container{
+  margin-left: 230px;
+}
+</style>
