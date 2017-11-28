@@ -4,8 +4,12 @@ import Index from '@/pages/index'
 import dropDown from '@/pages/content/dropDown'
 import alert from '@/pages/content/alert'
 import message from '@/pages/content/message'
-import layout from '@/pages/content/layout'
+import Grid from '@/pages/content/Grid'
 import form from '@/pages/content/form'
+import Container from '@/pages/content/Container'
+import Button from '@/pages/content/Button'
+import Menu from '@/pages/content/Menu'
+
 Vue.use(Router)
 
 export default new Router({
@@ -26,13 +30,40 @@ export default new Router({
       component: dropDown
     }]
   }, {
-    path: '/layout',
-    name: 'Layout',
+    path: '/grid',
+    name: 'Grid',
     component: Index,
     children: [{
       path: 'index',
       name: 'main',
-      component: layout
+      component: Grid
+    }]
+  }, {
+    path: '/container',
+    name: 'Container',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: Container
+    }]
+  }, {
+    path: '/button',
+    name: 'Button',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: Button
+    }]
+  }, {
+    path: '/menu',
+    name: 'Menu',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: Menu
     }]
   }, {
     path: '/form',
