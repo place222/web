@@ -6,6 +6,8 @@ import alert from '@/pages/content/alert'
 import message from '@/pages/content/message'
 import Grid from '@/pages/content/Grid'
 import form from '@/pages/content/form'
+import Container from '@/pages/content/Container'
+
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +35,15 @@ export default new Router({
       path: 'index',
       name: 'main',
       component: Grid
+    }]
+  }, {
+    path: '/container',
+    name: 'Container',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: Container
     }]
   }, {
     path: '/form',
