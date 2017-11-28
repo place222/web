@@ -8,6 +8,7 @@
         <div class="content">col-24</div>
       </grid-col>
     </grid-row>
+    <br/>
     <grid-row>
       <grid-col :span="12">
         <div class="content">col-12</div>
@@ -16,6 +17,7 @@
         <div class="content">col-12</div>
       </grid-col>
     </grid-row>
+    <br/>
     <grid-row>
       <grid-col :span="6">
         <div class="content">col-6</div>

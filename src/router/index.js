@@ -7,6 +7,8 @@ import message from '@/pages/content/message'
 import Grid from '@/pages/content/Grid'
 import form from '@/pages/content/form'
 import Container from '@/pages/content/Container'
+import Button from '@/pages/content/Button'
+import Menu from '@/pages/content/Menu'
 
 Vue.use(Router)
 
@@ -44,6 +46,24 @@ export default new Router({
       path: 'index',
       name: 'main',
       component: Container
+    }]
+  }, {
+    path: '/button',
+    name: 'Button',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: Button
+    }]
+  }, {
+    path: '/menu',
+    name: 'Menu',
+    component: Index,
+    children: [{
+      path: 'index',
+      name: 'main',
+      component: Menu
     }]
   }, {
     path: '/form',

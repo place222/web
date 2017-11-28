@@ -27,7 +27,7 @@ export default {
         { id: 8, path: "/timepikcer/index", name: "TimePicker时间选择器" },
         { id: 9, path: "/datepicker/index", name: "DatePicker日期选择器" },
         { id: 10, path: "/datetimepicker/index", name: "DateTimePicker日期时间选择器" },
-        { id: 11, path: "/form/index", name: "表单" },
+        { id: 11, path: "/menu/index", name: "菜单" },
 
         { id: 1, path: "/alert/index", name: "弹出框" },
         { id: 2, path: "/dropdown/index", name: "下拉菜单" },
