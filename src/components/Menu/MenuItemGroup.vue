@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.menu_item_group_title{
+.menu_item_group_title {
   display: block;
 }
 </style>

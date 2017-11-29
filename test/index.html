@@ -65,7 +65,7 @@
             </tbody>
         </table>
     </div>
-
+<script src="index.js"></script>
     <script>
         window.onload = function () {
             var tbody = document.querySelector('tbody');
@@ -84,7 +84,7 @@
             })
 
             var days = new DatePicker(new Date(2017, 12)).get42Days();
-            buildTable(tbody,days);            
+            buildTable(tbody,days);
         }
         function clearTable(ele){
             ele.innerHTML = "";
