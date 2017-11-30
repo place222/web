@@ -57,8 +57,8 @@
 <script>
 import GridRow from "@/components/Grid/GridRow";
 import GridCol from "@/components/Grid/Gridcol";
-import CheckBox from "@/components/form/CheckBox";
-import RadioBox from "@/components/form/RadioBox";
+import CheckBox from "@/components/Form/CheckBox";
+import RadioBox from "@/components/Form/Radio";
 export default {
   components: {
     GridRow,
