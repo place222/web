@@ -1,15 +1,17 @@
 <template>
   <li class="menu_item">
-    <a href="#" @click.stop="handleClick">
-      <i class="fa fa-archive"></i>
+    <a href="#" @click.stop="show = !show" :class="show?'open':''">
+      <i class="fa" :class="icon?`fa-${icon}`:''"></i>
       <span><slot name="title"></slot></span>
-      <i class="fa fa-angle-left pull-right"></i>
+      <i class="fa fa-caret-left fa-lg pull-right"></i>
     </a>
-    <transition name="fade"
-    @before-enter="beforeEnter"
-    @enter="enter"
-    @after-enter="afterEnter"
-    @enter-cancelled="enterCancelled">
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @leave = "leave"
+      @after-leave ="afterLeave">
       <ul v-show="show">
         <slot></slot>
       </ul>
@@ -19,28 +21,63 @@
 
 <script>
 export default {
+  props: {
+    icon: {
+      type: String
+    }
+  },
   data() {
     return {
       show: false
     };
   },
   methods: {
-    handleClick: function() {
-      this.show = !this.show;
-    },
     beforeEnter: function(el) {
-      //获取一下子节点的总高 然后赋值给动画的max-height
-      var maxHeight = 0;
-      var lis = el.getElementsByTagName("li");
+      el.dataset.oldPaddingTop = el.style.paddingTop;
+      el.dataset.oldPaddingBottom = el.style.paddingBottom;
+
+      el.style.height = "0";
+      el.style.paddingTop = 0;
+      el.style.paddingBottom = 0;
     },
     enter: function(el) {
-      console.log("执行中");
+      el.dataset.oldOverflow = el.style.overflow;
+      if (el.scrollHeight !== 0) {
+        el.style.height = el.scrollHeight + "px";
+        el.style.paddingTop = el.dataset.oldPaddingTop;
+        el.style.paddingBottom = el.dataset.oldPaddingBottom;
+      } else {
+        el.style.height = "";
+        el.style.paddingTop = el.dataset.oldPaddingTop;
+        el.style.paddingBottom = el.dataset.oldPaddingBottom;
+      }
+      el.style.overflow = "hidden";
     },
     afterEnter: function(el) {
-      console.log("执行后");
+      el.style.height = "";
+      el.style.overflow = el.dataset.oldOverflow;
     },
-    enterCancelled: function() {
-      console.log("取消了");
+    beforeLeave: function(el) {
+      if (!el.dataset) el.dataset = {};
+      el.dataset.oldPaddingTop = el.style.paddingTop;
+      el.dataset.oldPaddingBottom = el.style.paddingBottom;
+      el.dataset.oldOverflow = el.style.overflow;
+
+      el.style.height = el.scrollHeight + "px";
+      el.style.overflow = "hidden";
+    },
+    leave: function(el) {
+      if (el.scrollHeight !== 0) {
+        el.style.height = 0;
+        el.style.paddingTop = 0;
+        el.style.paddingBottom = 0;
+      }
+    },
+    afterLeave: function(el) {
+      el.style.height = "";
+      el.style.overflow = el.dataset.oldOverflow;
+      el.style.paddingTop = el.dataset.oldPaddingTop;
+      el.style.paddingBottom = el.dataset.oldPaddingBottom;
     }
   }
 };
@@ -48,6 +85,9 @@ export default {
 
 
 <style lang="less" scoped>
+.open {
+  display: block;
+}
 .menu_item {
   & a:hover {
     background-color: lighten(#222d32, 10%);
@@ -57,6 +97,12 @@ export default {
     padding: 10px 12px;
     display: block;
     color: #eee;
+    & .pull-right {
+      transition: 0.5s;
+    }
+    &.open .pull-right {
+      transform: rotate(-90deg);
+    }
   }
 
   & i + span {
@@ -66,18 +112,7 @@ export default {
   & > ul {
     padding-left: 5px;
     list-style: none;
-    max-height: 400px;
-    overflow: hidden; //过渡的多余高度隐藏
-  }
-  .fade-enter-active {
-    transition: max-height .3s ease-out;
-  }
-  .fade-leave-active {
-    transition: max-height .3s ease-in;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    max-height: 0;
+    transition: height 0.2s ease;
   }
 }
 </style>

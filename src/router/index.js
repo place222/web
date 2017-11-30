@@ -1,14 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/pages/index'
-import dropDown from '@/pages/content/dropDown'
-import alert from '@/pages/content/alert'
-import message from '@/pages/content/message'
-import Grid from '@/pages/content/Grid'
-import form from '@/pages/content/form'
-import Container from '@/pages/content/Container'
+
+import dropDown from '@/pages/nav/dropDown'
+import Menu from '@/pages/nav/Menu'
+
+import alert from '@/pages/notice/alert'
+import message from '@/pages/notice/message'
+
+import Grid from '@/pages/layout/Grid'
+
+import form from '@/pages/form/form'
+
+import Container from '@/pages/container/Container'
+
 import Button from '@/pages/content/Button'
-import Menu from '@/pages/content/Menu'
 
 Vue.use(Router)
 
@@ -17,7 +23,7 @@ export default new Router({
     path: '/',
     name: 'Index',
     redirect: to => {
-      return '/alert/index'
+      return '/grid/index'
     },
     component: Index
   }, {

@@ -1,14 +1,29 @@
 <template>
   <li class="menu_item" @click="handleItemClick">
-    <a href="#">
-      <i class="fa fa-archive"></i>
-      <span><slot></slot></span>
-    </a>
+    <template v-if="$slots.default">
+      <slot></slot>
+    </template>
+    <template v-else>
+      <a href="#">
+        <i class="fa" :class="icon?`fa-${icon}`:''"></i>
+        <span>{{title}}</span>
+      </a>
+    </template>
   </li>
 </template>
 
 <script>
 export default {
+  props: {
+    title: String,
+    commmand: {
+      type: String
+    },
+    icon: {
+      type: String,
+      default: "address-book"
+    }
+  },
   methods: {
     handleItemClick: function() {
       this.$emit("menu-item-click");

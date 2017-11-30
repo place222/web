@@ -1,27 +1,27 @@
 <template>
   <div>
     <!-- Main Header -->
-    <main-header></main-header>
+    <MainHeader></MainHeader>
 
-    <main-sidebar></main-sidebar>
+    <MainSidebar></MainSidebar>
 
-    <main-content class="container"></main-content>
+    <MainContent class="container"></MainContent>
 
   </div>
 </template>
 
 <script>
-import mainHeader from "@/pages/header/mainHeader";
-import mainSidebar from "@/pages/sidebar/mainSidebar";
-import mainContent from "@/pages/content/mainContent";
-import mainFooter from "@/pages/footer/mainFooter";
+import MainHeader from "@/pages/base/MainHeader";
+import MainSidebar from "@/pages/base/MainSidebar";
+import MainContent from "@/pages/base/MainContent";
+import MainFooter from "@/pages/base/mainFooter";
 
 export default {
   components: {
-    mainHeader,
-    mainSidebar,
-    mainContent,
-    mainFooter
+    MainHeader,
+    MainSidebar,
+    MainContent,
+    MainFooter
   }
 };
 </script>
