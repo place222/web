@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <!-- 看看这里面的checked属性是怎么回事 -->
-    <input type="radio" value="你好2" v-model="value"/>
-    <input type="radio" value="你好1" v-model="value"/>
+  <div class="container">
+    <Input></Input>
   </div>
 </template>
 
@@ -24,3 +22,8 @@ export default {
 </script>
 
 
+<style lang="less" scoped>
+.container {
+  padding: 20px;
+}
+</style>
