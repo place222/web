@@ -1,33 +1,29 @@
 <template>
   <label class="radio" >
-    <span class="radio_circular" >
-      <input type="radio" :value="label" v-model="model" @change="handleChange"/>
+    <span class="radio_circular" :class="checked==value?'checked':''" >
+      <input type="radio" :checked="checked == value" @change="handleChange" :value="value"/>
     </span>
-    <span class="radio_text">{{label}}</span>
+    <span class="radio_text"><slot></slot></span>
   </label>
 </template>
 <script>
 export default {
-  props: {
-    value: {},
-    label: {}
+  model: {
+    prop: "checked",
+    event: "change"
   },
-  computed: {
-    model: {
-      get() {
-        console.log(`get方法${this.value}`)
-        return this.value;
-      },
-      set(val) {
-        console.log(`set方法${val}`)
-        this.$emit("input", val);
-      }
-    }
+  props: {
+    checked: [String, Number, Boolean],
+    value: [String, Number, Boolean]
   },
   methods: {
-    handleChange() {
-        this.$emit("change", this.model);
-
+    handleChange(event) {
+      this.$emit("change", this.value);
+    }
+  },
+  watch: {
+    checked: function(val, oldVal) {
+      //console.log(this.checked);
     }
   }
 };
@@ -42,24 +38,22 @@ export default {
   cursor: pointer;
 }
 .radio_text {
-  margin-left: 4px;
 }
 .radio_circular.checked::after {
-  background-color: blue;
-  transform: scale(2);
+  background-color: #3c8dbc;
 }
 .radio_circular {
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  border: 1px solid blue;
+  border: 1px solid #3c8dbc;
   display: inline-block;
   box-sizing: border-box;
   position: relative;
   &:after {
     content: "";
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
     border-radius: 100%;
     background-color: transparent;
     position: absolute;
@@ -68,11 +62,10 @@ export default {
     right: 0;
     bottom: 0;
     margin: auto;
-    transform: scale(1);
-    transition: all 0.2s;
+    transition: all .2s;
   }
   & > input {
-    // opacity: 0;
+     opacity: 0;
   }
 }
 </style>
