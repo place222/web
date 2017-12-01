@@ -1,24 +1,33 @@
 <template>
-  <label class="radio" for="radio">
-    <span class="radio_circular">
-      <input type="radio" id="radio" :value="value">
+  <label class="radio" >
+    <span class="radio_circular" >
+      <input type="radio" :value="label"  @change="handleChange"/>
     </span>
-    <span class="radio_text">这个是文字</span>
+    <span class="radio_text">{{label}}</span>
   </label>
 </template>
 <script>
 export default {
   props: {
-    value: String
+    value: {},
+    label: {}
   },
-  data() {
-    return {
-      checked: false
-    };
+  computed: {
+    model: {
+      get() {
+        console.log(`get方法${this.value}`)
+        return this.value;
+      },
+      set(val) {
+        console.log(`set方法${val}`)
+        this.$emit("input", val);
+      }
+    }
   },
   methods: {
-    change: function() {
-      console.log(this.checked);
+    handleChange() {
+        this.$emit("change", this.model);
+
     }
   }
 };
@@ -63,7 +72,7 @@ export default {
     transition: all 0.2s;
   }
   & > input {
-    opacity: 0;
+    // opacity: 0;
   }
 }
 </style>
