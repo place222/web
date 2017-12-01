@@ -1,7 +1,7 @@
 <template>
   <label class="radio" >
     <span class="radio_circular" >
-      <input type="radio" :value="label"  @change="handleChange"/>
+      <input type="radio" :value="label" v-model="model" @change="handleChange"/>
     </span>
     <span class="radio_text">{{label}}</span>
   </label>
