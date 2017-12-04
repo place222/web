@@ -2,7 +2,7 @@
   <div class="calendar">
     <input type="text">
     <div class="header">
-        <div><a href="#" id="prev">&lt;</a></div>
+        <div><a href="#" id="prev" @click="preMonth">&lt;</a></div>
         <div id="now">2017-02-22</div>
         <div>
             <a href="#" id="next">&gt;</a>
@@ -21,34 +21,37 @@
             </tr>
         </thead>
         <tbody>
-
+         
         </tbody>
     </table>
   </div>
 </template>
 <script>
-import DatePickerProto from './DatePickerProto'
+import DatePickerProto from "./proto/DatePickerProto";
+
+
 
 export default {
-  mixins:[DatePickerProto],
-
+  mixins: [DatePickerProto],
+  data() {
+    return {
+      days: []
+    };
+  },
+  methods: {
+    preMonth: function() {
+      var days = this.get42Days(2017, 11);
+      this.clearTable(this.$refs.body);
+      this.buildTable(this.$refs.body, days);
+    },
+    nextMonth: function() {
+      var days = this.get42Days(2017, 13);
+      this.clearTable(this.$refs.body);
+      this.buildTable(this.$refs.body, days);
+    }
+  },
   mounted: function() {
-    var tbody = document.querySelector("tbody");
-    var prev = document.getElementById("prev");
-    var next = document.getElementById("next");
-
-    prev.addEventListener("click", function() {
-      var days = new DatePicker().get42Days(2017, 11);
-      clearTable(tbody);
-      buildTable(tbody, days);
-    });
-    next.addEventListener("click", function() {
-      var days = new DatePicker().get42Days(2017, 13);
-      clearTable(tbody);
-      buildTable(tbody, days);
-    });
-
-    this.buildTable(tbody, this.get42Days());
+    this.buildTable(this.$refs.body, this.get42Days());
   }
 };
 </script>
