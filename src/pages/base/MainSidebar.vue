@@ -63,9 +63,9 @@ export default {
         },
         { id: 4, path: "/datepicker", name: "日期选择",
           children:[
-            { id: 8, path: "/datepicker/datepicker", name: "TimePicker时间选择器" },
-            { id: 9, path: "/datepicker/datetimepicker", name: "DatePicker日期选择器" },
-            { id: 10,path: "/datepicker/timepicker",name: "DateTimePicker日期时间选择器"},
+            { id: 8, path: "/datepicker/datepicker", name: "DatePicker日期选择器" },
+            { id: 9, path: "/datepicker/datetimepicker", name: "DateTimePicker日期时间选择器" },
+            { id: 10,path: "/datepicker/timepicker",name: "TimePicker时间选择器"},
           ]
         },
         { id: 11,path: "/nav",name: "导航",

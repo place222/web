@@ -10,7 +10,7 @@ import message from '@/pages/notice/message'
 
 import Grid from '@/pages/layout/Grid'
 
-import form from '@/pages/form/form'
+import Form from '@/pages/form/Form'
 import Checkbox from '@/pages/form/Checkbox'
 import Radio from '@/pages/form/Radio'
 import Select from '@/pages/form/Select'
@@ -79,7 +79,7 @@ export default new Router({
       component: Switch
     }, {
       path: 'form',
-      component: form
+      component: Form
     }]
   }, {
     path: '/datepicker',

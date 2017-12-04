@@ -12,11 +12,12 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js",
-    "prod":"npm run build && node ./server/main.js"
+    "prod": "npm run build && node ./server/main.js"
   },
   "dependencies": {
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "popper.js": "^1.12.9",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
