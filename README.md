@@ -12,6 +12,6 @@ npm install
 npm run dev
 
 ## 准备加入的组件
-> datetimepicker
+> 查看一下form和datepicker 是什么原因 是不是要避开冲突的命名
 > 
 > datatable
