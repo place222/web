@@ -8,7 +8,7 @@ DatePicker.prototype.getNow = function () {
 }
 
 DatePicker.prototype.get42Days = function (year, month) {
-  var now = new Date()
+  var now = new Date(year, month)
   var thisMonthOfYear = now.getFullYear() // 2017
   var thisMonthOfMonth = now.getMonth() // 10
   var thisMonthOfDate = now.getDate() // 28

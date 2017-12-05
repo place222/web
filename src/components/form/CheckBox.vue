@@ -13,7 +13,12 @@ export default {
     prop: "items"
   },
   props: {
-    items: [Array],
+    items: {
+      type:Array,
+      default:function(){
+        return [];
+      }
+    },
     value: [String, Boolean, Number]
   },
   data() {
