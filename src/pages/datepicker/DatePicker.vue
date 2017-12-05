@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.container{
+.container {
   padding: 50px;
 }
 </style>

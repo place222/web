@@ -1,13 +1,7 @@
-function DatePicker() {
-  this.days = []
-  this.now = new Date()
-}
+function DatePicker() {}
 
-DatePicker.prototype.getNow = function () {
-  return this.now
-}
-
-DatePicker.prototype.get42Days = function (year, month) {
+DatePicker.get42Days = function (year, month) {
+  var days = []
   var now = new Date(year, month)
   var thisMonthOfYear = now.getFullYear() // 2017
   var thisMonthOfMonth = now.getMonth() // 10
@@ -20,23 +14,26 @@ DatePicker.prototype.get42Days = function (year, month) {
   var lastMonthOfDays = day - 1 // 上个月需要几天
 
   var nextMonthOfDays = 42 - lastMonthOfDays - thisMonthOfDays // 下个月需要几天
-  var i = 0
+  let i = 0
   for (i = 1 - lastMonthOfDays; i <= 0; i++) {
-    this.days.push({
-      date: new Date(thisMonthOfYear, thisMonthOfMonth, i)
+    days.push({
+      date: new Date(thisMonthOfYear, thisMonthOfMonth, i),
+      isSelected: false
     })
   }
   for (i = 1; i < thisMonthOfDays + 1; i++) {
-    this.days.push({
-      date: new Date(thisMonthOfYear, thisMonthOfMonth, i)
+    days.push({
+      date: new Date(thisMonthOfYear, thisMonthOfMonth, i),
+      isSelected: false
     })
   }
   for (i = 1; i < nextMonthOfDays + 1; i++) {
-    this.days.push({
-      date: new Date(thisMonthOfYear, thisMonthOfMonth + 1, i)
+    days.push({
+      date: new Date(thisMonthOfYear, thisMonthOfMonth + 1, i),
+      isSelected: false
     })
   }
-  return this.days
+  return days
 }
 
 export default DatePicker

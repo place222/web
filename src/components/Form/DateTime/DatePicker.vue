@@ -1,12 +1,12 @@
 <template>
   <div class="calendar">
-    <input type="text">
+    <input type="text" :value="selectedDate.date|date">
     <div class="header">
-        <div><a href="#" id="prev" @click="preMonth">&lt;</a></div>
-        <div id="now">2017-02-22</div>
-        <div>
-            <a href="#" id="next">&gt;</a>
-        </div>
+        <div><a href="#" @click.stop="preYear">&lt;&lt;</a></div>
+        <div><a href="#" @click.stop="preMonth">&lt;</a></div>
+        <div>{{year+'年'+month+'月'}}</div>
+        <div><a href="#" @click.stop="nextMonth">&gt;</a></div>
+        <div><a href="#" @click.stop="nextYear">&gt;&gt;</a></div>
     </div>
     <table>
         <thead>
@@ -21,51 +21,62 @@
             </tr>
         </thead>
         <tbody>
-
+          <tr v-for="(week,index) in days">
+            <td v-for="date in week" @click.stop="selectDate(date)" :class="date.isSelected?'selected':''">{{date.date.getDate()}}</td>
+          </tr>
         </tbody>
     </table>
   </div>
 </template>
 <script>
 import DatePickerProto from "./proto/DatePickerProto";
-
+import './js/dateHelper'
+const week = ['一','二','三','四','五','六','日']
 export default {
   mixins: [DatePickerProto],
   data() {
+    let now = new Date();
     return {
-      days: []
+      selectedDate: {},
+      days: null,
+      year:now.getFullYear(),
+      month:now.getMonth()+1
     };
   },
   methods: {
-    preMonth: function() {
-      var days = this.get42Days(2017, 11);
-      this.clearTable(this.$refs.body);
-      this.buildTable(this.$refs.body, days);
+    selectDate:function(date){
+      this.selectedDate.isSelected = false;
+      date.isSelected = true;
+      this.selectedDate = date;
     },
-    nextMonth: function() {
-      var days = this.get42Days(2017, 13);
-      this.clearTable(this.$refs.body);
-      this.buildTable(this.$refs.body, days);
+    preMonth:function(){
+      this.month -=1;
+      if(this.month===0){
+        this.year -=1;
+        this.month = 12;
+      }
+      this.days = this.get42Days(this.year,this.month-1)
+    },
+    nextMonth:function(){
+      this.month +=1;
+      if(this.month === 13){
+        this.year+=1;
+        this.month = 1;
+      }
+      this.days = this.get42Days(this.year,this.month-1)
+    },
+    preYear:function(){
+      this.year -=1;
+      this.days = this.get42Days(this.year,this.month-1)
+    },
+    nextYear:function(){
+      this.year+=1;
+      this.days = this.get42Days(this.year,this.month-1)
     }
   },
-  mounted: function() {
-    var _this = this;
-    var tbody = document.querySelector("tbody");
-    var prev = document.getElementById("prev");
-    var next = document.getElementById("next");
-
-    prev.addEventListener("click", function() {
-      var days = _this.get42Days(2017, 11);
-      _this.clearTable(tbody);
-      _this.buildTable(tbody, days);
-    });
-    next.addEventListener("click", function() {
-      var days = _this.get42Days(2017, 13);
-      _this.clearTable(tbody);
-      _this.buildTable(tbody, days);
-    });
-
-    this.buildTable(tbody, this.get42Days(2017, 12));
+  mounted:function(){
+    this.days = this.get42Days(this.year,this.month-1)
+    console.log(this.days);
   }
 };
 </script>
@@ -87,14 +98,18 @@ export default {
   flex: 1;
   text-align: center;
 }
-
+.header div:nth-of-type(3){
+  flex-grow:3;
+}
 .calendar table,
 tr,
 td,
 th {
   border: 1px solid #eee;
 }
-
+td.selected{
+  background:red;
+}
 .calendar table {
   width: 100%;
   border-collapse: collapse;
