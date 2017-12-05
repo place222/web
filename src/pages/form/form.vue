@@ -32,8 +32,8 @@
 import GridRow from "@/components/Grid/GridRow";
 import GridCol from "@/components/Grid/Gridcol";
 
-import CheckBox from "@/components/Form/CheckBox";
-import Radio from "@/components/Form/Radio";
+import CheckBox from "@/components/Form/CheckBox/CheckBox";
+import Radio from "@/components/Form/Radio/Radio";
 import Input from "@/components/Form/Input";
 import Select from "@/components/Form/Select/Select";
 import Option from "@/components/Form/Select/Option";

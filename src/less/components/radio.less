@@ -7,15 +7,23 @@
     cursor: pointer;
 }
 
+.radio.is-disabled {
+    cursor: not-allowed;
+    color: @brand-notallowd;
+    & .radio_circular {
+        border-color: @brand-notallowd;
+    }
+}
+
 .radio_circular.checked::after {
-    background-color: #3c8dbc;
+    background-color: @brand-primary;
 }
 
 .radio_circular {
     width: 20px;
     height: 20px;
     border-radius: 100%;
-    border: 1px solid #3c8dbc;
+    border: 1px solid @brand-primary;
     display: inline-block;
     box-sizing: border-box;
     position: relative;
