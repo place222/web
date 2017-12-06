@@ -21,6 +21,10 @@ import DatePicker from '@/pages/datepicker/DatePicker'
 import DateTimePicker from '@/pages/datepicker/DateTimePicker'
 import TimePicker from '@/pages/datepicker/TimePicker'
 
+import Tree from '@/pages/data/Tree'
+import Table from '@/pages/data/Table'
+import Pagination from '@/pages/data/Pagination'
+
 import Container from '@/pages/container/Container'
 
 import Button from '@/pages/content/Button'
@@ -93,6 +97,16 @@ export default new Router({
     }, {
       path: 'timepicker',
       component: TimePicker
+    }]
+  }, {
+    path: '/data',
+    component: Index,
+    children: [{
+      path: 'tree',
+      component: Tree
+    }, {
+      path: 'table',
+      component: Table
     }]
   }, {
     path: '/nav',

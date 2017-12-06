@@ -68,6 +68,12 @@ export default {
             { id: 10,path: "/datepicker/timepicker",name: "TimePicker时间选择器"},
           ]
         },
+        { id: 11,path: "/data",name: "数据组件",
+          children: [
+            { id: 13, path: "/data/table", name: "数据表格" },
+            { id: 2, path: "/data/tree", name: "树形下拉" }
+          ]
+        },
         { id: 11,path: "/nav",name: "导航",
           children: [
             { id: 13, path: "/nav/dropdown", name: "竖向菜单" },
