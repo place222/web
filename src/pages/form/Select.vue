@@ -5,6 +5,7 @@
       <Option value="2">呵呵2</Option>
       <Option value="3">呵呵3</Option>
     </Select>
+    <p>测试遮罩</p>
   </div>
 </template>
 

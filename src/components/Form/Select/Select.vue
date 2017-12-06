@@ -8,18 +8,35 @@
 
 <script>
 import Popper from "popper.js";
-
+let startClick;
 export default {
   componentName: "Select",
   data() {
     return {
-      popper: {},
+      popper: null,
       show: false,
       selectValue: null
     };
   },
   mounted() {
+    var _this = this;
     this.$on("select-item", this.selectItem);
+    document.addEventListener('mousedown',function(event){startClick = event;},false);
+    document.addEventListener('mouseup',function(event){
+      //如果判断点击的不是某个元素的区域
+      if(_this.$el.contains(startClick.target) //如果down的时候点击的目标在这个元素里面就是点击这个元素的区域下
+      ||_this.$el.contains(event.target) //up同理
+      ||_this.$el === event.target
+      )
+      return;
+      if(_this.popper){
+        _this.show = !_this.show;
+        _this.$nextTick(()=>{
+          _this.popper.destroy();
+          _this.popper = null;
+        })
+      }
+    },false)
   },
   methods: {
     handleFocus: function() {
@@ -31,7 +48,6 @@ export default {
       });
     },
     selectItem: function(val) {
-      console.log(val);
       this.selectValue = val;
     }
   }
@@ -51,12 +67,14 @@ export default {
     border-bottom-right-radius: 0;
   }
   & > ul {
+    background-color: #fff;
     border: 1px solid #d8dce5;
     border-top: 0;
     width: 240px;
     padding: 6px 0;
     box-shadow: 2px 2px 2px #888888;
     box-sizing: border-box;
+    z-index: 1000;//popup的东西应该从1000开始计算
   }
 }
 </style>
