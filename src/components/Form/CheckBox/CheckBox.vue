@@ -1,12 +1,20 @@
 <template>
     <label class="checkbox" :class="[
-      {'check':model},
+      {'check':isCheck},
       {'is-disabled':disabled}
     ]" >
       <span class="checkbox_check">
         <input type="checkbox"
-              :name="name"
+              v-if="trueValue||falseValue"
               :value="value"
+              :name="name"
+              v-model="model"
+              :disabled="disabled"
+              >
+        <input type="checkbox"
+              v-else
+              :value="value"
+              :name="name"
               v-model="model"
               :disabled="disabled"
               >
@@ -16,35 +24,49 @@
 </template>
 
 <script>
+import Emitter from "../../../mixins/emitter";
+
 export default {
+  componentName: "CheckBox",
+  mixins: [Emitter],
   model: {
-    prop: "items"
+    prop: "data"
   },
-  props: {
-    items: {
-      type: Array,
-      default: function() {
-        return [];
+  computed: {
+    model: {
+      get() {
+        return this.data;
+      },
+      set(val) {
+        if (this.isGroup) {
+          this.dispatch("CheckBoxGroup", "checkbox-change", this.value);
+        } else {
+          this.$emit("input", val);
+        }
       }
     },
-    value: [String, Boolean, Number],
+    isGroup: function() {
+      return this.$parent.$options.componentName === "CheckBoxGroup";
+    },
+    isCheck: function() {
+      if (this.isGroup) {
+        return this.$parent.$props.value.indexOf(this.value) != -1;
+      } else {
+        if (Array.isArray(this.model)) {
+          return this.model.indexOf(this.value) != -1;
+        } else {
+          return this.model;
+        }
+      }
+    }
+  },
+  props: {
+    data: {}, //外部闯入的绑定值,如果这个绑定的是非array对象的时候会是true,false,否则会是个数组
+    value: [String, Boolean, Number], //这个是当前checkbox 的值，如果是未定义或者空，会是true false,可以指定true-value和false-value,如果没有那么需要用数组来看待
+    trueValue: [String, Boolean, Number],
+    falseValue: [String, Boolean, Number],
     name: String,
     disabled: Boolean
-  },
-  data() {
-    return {
-      model: this.items.indexOf(this.value) != -1
-    };
-  },
-  watch: {
-    model: function(val, oldVal) {
-      if (val) {
-        this.items.push(this.value);
-      } else {
-        this.items.splice(this.items.indexOf(this.value), 1);
-      }
-      this.$emit("input", this.items);
-    }
   }
 };
 </script>
