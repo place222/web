@@ -1,7 +1,9 @@
 <template>
     <label class="checkbox" :class="check?'check':''" >
       <span class="checkbox_check">
-        <input type="checkbox" v-model="check">
+        <input type="checkbox"
+              v-model="check"
+              >
       </span>
       <span class="checkbox_text"><slot></slot></span>
     </label>
@@ -14,8 +16,8 @@ export default {
   },
   props: {
     items: {
-      type:Array,
-      default:function(){
+      type: Array,
+      default: function() {
         return [];
       }
     },

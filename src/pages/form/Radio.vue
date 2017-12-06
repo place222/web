@@ -60,7 +60,7 @@ export default {
 <style lang="less" scoped>
 .container {
   padding: 50px;
-  & p{
+  & p {
     margin: 10px 0;
   }
 }
