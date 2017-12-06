@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Form direction="">
-      <FormItem label="活动名称">
+      <FormItem label="活动名称11">
          <Input></Input>
       </FormItem>
       <FormItem label="活动区域">
@@ -14,10 +14,12 @@
       </FormItem>
       <FormItem label="活动时间"></FormItem>
       <FormItem label="活动性质">
-          <CheckBox>美食餐厅线上活动</CheckBox>
-          <CheckBox>地推活动</CheckBox>
-          <CheckBox>线下主题活动</CheckBox>
-          <CheckBox>单纯品牌曝光</CheckBox>
+        <CheckBoxGroup v-model="checkList">
+          <CheckBox value="1">美食餐厅线上活动</CheckBox>
+          <CheckBox value="2">地推活动</CheckBox>
+          <CheckBox value="3">线下主题活动</CheckBox>
+          <CheckBox value="4">单纯品牌曝光</CheckBox>
+        </CheckBoxGroup>
       </FormItem>
       <FormItem label="特殊资源">
           <Radio>线上品牌赞助商</Radio>
@@ -33,6 +35,8 @@ import GridRow from "@/components/Grid/GridRow";
 import GridCol from "@/components/Grid/Gridcol";
 
 import CheckBox from "@/components/Form/CheckBox/CheckBox";
+import CheckBoxGroup from "@/components/Form/CheckBox/CheckBoxGroup";
+
 import Radio from "@/components/Form/Radio/Radio";
 import Input from "@/components/Form/Input";
 import Select from "@/components/Form/Select/Select";
@@ -47,6 +51,7 @@ export default {
     GridRow,
     GridCol,
     CheckBox,
+    CheckBoxGroup,
     Radio,
     Select,
     Option,
@@ -54,6 +59,11 @@ export default {
     Button,
     Form,
     FormItem
+  },
+  data(){
+    return {
+      checkList:[]
+    }
   }
 };
 </script>
