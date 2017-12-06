@@ -1,0 +1,60 @@
+.message {
+    width: 300px;
+    position: absolute;
+    z-index: 2000;
+    left: 50%;
+    top: 100px; //这个是我们最终的位置
+    margin-left: -150px;
+    padding: 10px;
+    line-height: 30px;
+    box-sizing: border-box;
+    .opacity(0.9);
+    .border-radius(3px);
+    .close {
+      display: block;
+      float: right;
+      color: #000;
+      border: 0;
+      padding: 0;
+      background: 0 0;
+      .opacity(0.2);
+      &:hover {
+        .opacity(0.5);
+      }
+    }
+    i {
+      margin-right: 5px;
+    }
+  }
+  
+  .message-success {
+    &:extend(.bg-green);
+    border-color: darken(@green, 5%);
+  }
+  
+  .message-danger,
+  .message-error {
+    &:extend(.bg-red);
+    border-color: darken(@red, 5%);
+  }
+  
+  .message-warning {
+    &:extend(.bg-yellow);
+    border-color: darken(@yellow, 5%);
+  }
+  
+  .message-info {
+    &:extend(.bg-aqua);
+    border-color: darken(@aqua, 5%);
+  }
+  //这个是启动过渡的时候的元素的初始状态
+  .fade-enter,
+  .fade-leave-to {
+    top: -50px;
+    opacity: 0;
+  }
+  //这个是执行过渡的函数配置
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: top 0.5s, opacity 0.5s;
+  }

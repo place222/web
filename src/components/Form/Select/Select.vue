@@ -1,6 +1,9 @@
 <template>
   <div class="select">
     <input ref="input" type="text" @focus="handleFocus" v-model="selectValue">
+    <div class="arrow">
+      <!--这个地方放置箭头-->
+    </div>
     <ul ref="bubble" class="pop" v-show="show"><slot></slot></ul>
   </div>
 </template>
@@ -62,6 +65,16 @@ export default {
 }
 .select {
   width: 240px;
+  position: relative;
+  & .arrow{
+    width: 35px;
+    height: 35px;
+    border: 1px solid red;
+    position: absolute;
+    right: 0;
+    top:0;
+    box-sizing: border-box;
+  }
   & > input[type="text"] {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

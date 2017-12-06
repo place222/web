@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Alert from "@/components/alert/Alert";
-import Callout from "@/components/callout/Callout";
+import Alert from "@/components/Notice/alert/Alert";
+import Callout from "@/components/Notice/callout/Callout";
 
 export default {
   components: {
