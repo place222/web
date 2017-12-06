@@ -1,8 +1,14 @@
 <template>
-    <label class="checkbox" :class="check?'check':''" >
+    <label class="checkbox" :class="[
+      {'check':model},
+      {'is-disabled':disabled}
+    ]" >
       <span class="checkbox_check">
         <input type="checkbox"
-              v-model="check"
+              :name="name"
+              :value="value"
+              v-model="model"
+              :disabled="disabled"
               >
       </span>
       <span class="checkbox_text"><slot></slot></span>
@@ -21,15 +27,17 @@ export default {
         return [];
       }
     },
-    value: [String, Boolean, Number]
+    value: [String, Boolean, Number],
+    name: String,
+    disabled: Boolean
   },
   data() {
     return {
-      check: this.items.indexOf(this.value) != -1
+      model: this.items.indexOf(this.value) != -1
     };
   },
   watch: {
-    check: function(val, oldVal) {
+    model: function(val, oldVal) {
       if (val) {
         this.items.push(this.value);
       } else {

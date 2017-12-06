@@ -7,17 +7,33 @@
       <CheckBox v-model="checks" value="second">2</CheckBox>
       <CheckBox v-model="checks" value="third">3</CheckBox>
     </div>
+    <p>禁用状态</p>
+    <div class="stand_radio">
+      <CheckBox v-model="checks" value="first" disabled>1</CheckBox>
+      <CheckBox v-model="checks" value="second" disabled>2</CheckBox>
+      <CheckBox v-model="checks" value="third" disabled>3</CheckBox>
+    </div>
+    <p>分组</p>
+    <div class="stand_radio">
+      <CheckBoxGroup>
+        <CheckBox v-model="checks" value="first">1</CheckBox>
+        <CheckBox v-model="checks" value="second">2</CheckBox>
+        <CheckBox v-model="checks" value="third">3</CheckBox>
+      </CheckBoxGroup>
+    </div>
   </div>
 </template>
 <script>
 import CheckBox from "@/components/Form/CheckBox/CheckBox";
+import CheckBoxGroup from '@/components/Form/CheckBox/CheckBoxGroup';
 export default {
   components: {
-    CheckBox
+    CheckBox,
+    CheckBoxGroup
   },
   data() {
     return {
-      checks: ["first", "second"]
+      checks: []
     };
   },
   watch: {

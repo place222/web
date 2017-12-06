@@ -4,15 +4,23 @@
 }
 .checkbox{
   cursor: pointer;
+  &.is-disabled{
+    cursor: not-allowed;
+    color: @brand-notallowd;
+    & .checkbox_check{
+      background-color: @brand-notallowd;
+      border: 1px solid @brand-notallowd;
+    }
+  }
 }
 .checkbox.check .checkbox_check{
-  background-color: #3c8dbc;
+  background-color: @brand-primary;
 }
 .checkbox_check {
   width: 20px;
   height: 20px;
   border-radius: 3px;
-  border: 1px solid #3c8dbc;
+  border: 1px solid @brand-primary;
   display: inline-block;
   box-sizing: border-box;
   position: relative;
