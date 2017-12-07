@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Message from '@/components/message/main.js'
+import Message from '@/components/Notice/message/main.js'
 import './filter/DateFilter'
 
 Vue.config.productionTip = false

@@ -21,7 +21,6 @@ export default {
 .form_item {
   margin-bottom: 20px;
   line-height: 35px;
-  height: 35px;
 }
 .form_item::before,
 .form_item::after {
@@ -38,9 +37,8 @@ export default {
   width: 100px; //这里抽出去
 }
 .form_content {
-  display: inline-block;
   padding: 0 15px;
-
+  margin-left: 100px;
 }
 </style>
 

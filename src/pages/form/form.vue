@@ -15,10 +15,10 @@
       <FormItem label="活动时间"></FormItem>
       <FormItem label="活动性质">
         <CheckBoxGroup v-model="checkList">
-          <CheckBox value="1">美食餐厅线上活动</CheckBox>
-          <CheckBox value="2">地推活动</CheckBox>
-          <CheckBox value="3">线下主题活动</CheckBox>
-          <CheckBox value="4">单纯品牌曝光</CheckBox>
+          <CheckBox value="1">美食餐厅线上活动x</CheckBox>
+          <CheckBox value="2">地推活动x</CheckBox>
+          <CheckBox value="3">线下主题活动x</CheckBox>
+          <CheckBox value="4">单纯品牌曝光xyz</CheckBox>
         </CheckBoxGroup>
       </FormItem>
       <FormItem label="特殊资源">
