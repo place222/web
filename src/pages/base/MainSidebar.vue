@@ -23,6 +23,7 @@
 </template>
 
 <script>
+
 import Menu from "@/components/Menu/Menu";
 import MenuItem from "@/components/Menu/MenuItem";
 import SubMenu from "@/components/Menu/SubMenu";

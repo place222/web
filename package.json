@@ -12,9 +12,12 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js",
-    "prod": "npm run build && node ./server/main.js"
+    "prod": "npm run build && node ./server/main.js",
+    "mock": "json-server ./mock/db.json --port 3003"
   },
   "dependencies": {
+    "async-validator": "^1.8.2",
+    "axios": "^0.17.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "popper.js": "^1.12.9",
@@ -56,6 +59,7 @@
     "html-webpack-plugin": "^2.30.1",
     "inject-loader": "^3.0.0",
     "jquery": "^3.2.1",
+    "json-server": "^0.12.1",
     "karma": "^1.4.1",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.3.0",

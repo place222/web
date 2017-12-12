@@ -1,5 +1,5 @@
 <template>
-  <div class="form_item">
+  <div class="form_item" @flur="handleFlur">
       <label class="form_label">{{label}}</label>
       <div class="form_content">
         <slot></slot>
@@ -8,10 +8,17 @@
 </template>
 
 <script>
+import AsyncValidator from 'async-validator';
+
 export default {
   props: {
     label: String,
     direction: {}
+  },
+  methods:{
+    handleFlur:function(){
+      console.log('validate')
+    }
   }
 };
 </script>
