@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     handleClick: function() {
-      this.dispatch('Select','select-item',this.$slots.default[0].text);
+      this.dispatch('Select','select-item',{text:this.$slots.default[0].text,value:this.value});
     }
   }
 };

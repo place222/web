@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js",
     "prod": "npm run build && node ./server/main.js",
-    "mock": "json-server ./mock/db.json --port 3003"
+    "mock": "json-server --watch ./mock/db.json --port 3003"
   },
   "dependencies": {
     "async-validator": "^1.8.2",

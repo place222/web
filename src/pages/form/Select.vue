@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <Select>
+    <Select v-model="selectValue">
       <Option value="1">呵呵1</Option>
       <Option value="2">呵呵2</Option>
       <Option value="3">呵呵3</Option>
     </Select>
-    <p>测试遮罩</p>
+    <p>{{selectValue}}</p>
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
   components: {
     Select,
     Option
+  },
+  data(){
+    return {
+      selectValue:''
+    }
   }
 };
 </script>

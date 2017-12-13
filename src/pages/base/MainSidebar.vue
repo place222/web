@@ -23,7 +23,6 @@
 </template>
 
 <script>
-
 import Menu from "@/components/Menu/Menu";
 import MenuItem from "@/components/Menu/MenuItem";
 import SubMenu from "@/components/Menu/SubMenu";
@@ -41,55 +40,18 @@ export default {
       default: "address-book"
     }
   },
+  mounted: function() {
+    this.$http.get("http://localhost:3003/menu").then((res)=>{
+      this.items = res.data;
+    }).catch((res)=>{
+      console.log(res);
+    });
+  },
   data() {
     return {
       selected: 0,
-      items: [
-        { id: 0, path: "/layout", name: "布局" ,
-          children: [{ id: 14, path: "/layout/grid", name: "基础栅格系统" }]
-        },
-        { id: 1, path: "/container", name: "容器",
-          children: [{ id: 14, path: "/container/container", name: "容器" }]
-        },
-        { id: 2, path: "/content/button", name: "按钮" },
-        { id: 3, path: "/form", name: "表单",
-          children:[
-            { id: 3, path: "/form/radio", name: "Radio单选按钮" },
-            { id: 4, path: "/form/checkbox", name: "Checkbox多选框" },
-            { id: 5, path: "/form/input", name: "Input输入框" },
-            { id: 6, path: "/form/select", name: "select选择器" },
-            { id: 7, path: "/form/switch", name: "Switch开关" },
-            { id: 7, path: "/form/form", name: "表单" },
-          ]
-        },
-        { id: 4, path: "/datepicker", name: "日期选择",
-          children:[
-            { id: 8, path: "/datepicker/datepicker", name: "DatePicker日期选择器" },
-            { id: 9, path: "/datepicker/datetimepicker", name: "DateTimePicker日期时间选择器" },
-            { id: 10,path: "/datepicker/timepicker",name: "TimePicker时间选择器"},
-          ]
-        },
-        { id: 11,path: "/data",name: "数据组件",
-          children: [
-            { id: 13, path: "/data/table", name: "数据表格" },
-            { id: 2, path: "/data/tree", name: "树形下拉" }
-          ]
-        },
-        { id: 11,path: "/nav",name: "导航",
-          children: [
-            { id: 13, path: "/nav/dropdown", name: "竖向菜单" },
-            { id: 2, path: "/nav/menu", name: "下拉菜单" }
-          ]
-        },
-        { id: 11,path: "/notice",name: "通知",
-          children: [
-            { id: 1, path: "/notice/alert", name: "弹出框" },
-            { id: 3, path: "/notice/message", name: "消息框" },
-          ]
-        },{
-          id: 11,path: "/other",name: "其他",
-        }
-      ]
+      list:[],
+      items: []
     };
   },
   methods: {

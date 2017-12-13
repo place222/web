@@ -14,6 +14,9 @@ import Popper from "popper.js";
 let startClick;
 export default {
   componentName: "Select",
+  props:{
+    value:''
+  },
   data() {
     return {
       popper: null,
@@ -51,7 +54,8 @@ export default {
       });
     },
     selectItem: function(val) {
-      this.selectValue = val;
+      this.selectValue = val.text;
+      this.$emit('input',val.value);
     }
   }
 };
