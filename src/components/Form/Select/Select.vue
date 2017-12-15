@@ -14,8 +14,8 @@ import Popper from "popper.js";
 let startClick;
 export default {
   componentName: "Select",
-  props:{
-    value:''
+  props: {
+    value: ""
   },
   data() {
     return {
@@ -27,16 +27,27 @@ export default {
   mounted() {
     var _this = this;
     this.$on("select-item", this.selectItem);
-    document.addEventListener('mousedown',function(event){startClick = event;},false);
-    document.addEventListener('mouseup',function(event){
-      //如果判断点击的不是某个元素的区域
-      if(_this.$el.contains(startClick.target) //如果down的时候点击的目标在这个元素里面就是点击这个元素的区域下
-      ||_this.$el.contains(event.target) //up同理
-      ||_this.$el === event.target
-      )
-      return;
-      _this._destory();
-    },false)
+    document.addEventListener(
+      "mousedown",
+      function(event) {
+        startClick = event;
+      },
+      false
+    );
+    document.addEventListener(
+      "mouseup",
+      function(event) {
+        //如果判断点击的不是某个元素的区域
+        if (
+          _this.$el.contains(startClick.target) || //如果down的时候点击的目标在这个元素里面就是点击这个元素的区域下
+          _this.$el.contains(event.target) || //up同理
+          _this.$el === event.target
+        )
+          return;
+        _this._destory();
+      },
+      false
+    );
   },
   methods: {
     handleFocus: function() {
@@ -49,16 +60,16 @@ export default {
     },
     selectItem: function(val) {
       this.selectValue = val.text;
-      this.$emit('input',val.value);
+      this.$emit("input", val.value);
       this._destory();
     },
-    _destory:function(){
-      if(this.popper){
+    _destory: function() {
+      if (this.popper) {
         this.show = !this.show;
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
           this.popper.destroy();
           this.popper = null;
-        })
+        });
       }
     }
   }

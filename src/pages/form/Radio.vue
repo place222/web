@@ -10,13 +10,23 @@
         <Radio v-model="model1" value="1223">不可以</Radio>
         {{model1}}
       </div>
-      <transition name="fade">
+      <ElCollapseTransition>
         <div class="meta" v-show="hover1">
           <pre>
             <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
           </pre>
         </div>
-      </transition>
+      </ElCollapseTransition>
       <div class="control" @click.stop="hover1=!hover1">
         <span>显示代码</span>
       </div>
@@ -30,6 +40,16 @@
       <transition name="fade">
         <div class="meta" v-show="hover2">
           <pre>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
+            <code>123</code>
             <code>123</code>
           </pre>
         </div>
@@ -83,6 +103,7 @@
 <script>
 import Radio from "@/components/Form/Radio/Radio";
 import RadioGroup from "@/components/Form/Radio/RadioGroup";
+import ElCollapseTransition from "@/mixins/transitions/collapse-transition";
 
 export default {
   data() {
@@ -99,7 +120,8 @@ export default {
   },
   components: {
     Radio,
-    RadioGroup
+    RadioGroup,
+    ElCollapseTransition
   }
 };
 </script>
@@ -108,14 +130,7 @@ export default {
 .container {
   padding: 20px 50px;
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: height 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  height: 0;
-}
+
 .stand_radio {
   border: 1px solid #eee;
   border-radius: 3px;
@@ -126,7 +141,6 @@ export default {
     border-bottom: 1px solid #eee;
   }
   .meta {
-    height: 400px;
     background-color: #fafafa;
   }
   .control {
