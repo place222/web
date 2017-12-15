@@ -28,13 +28,13 @@
           {{model2}}
       </div>
       <transition name="fade">
-        <div class="meta" v-show="hover1">
+        <div class="meta" v-show="hover2">
           <pre>
             <code>123</code>
           </pre>
         </div>
       </transition>
-      <div class="control" @click.stop="hover1=!hover1">
+      <div class="control" @click.stop="hover2=!hover2">
         <span>显示代码</span>
       </div>
     </div>
@@ -46,13 +46,13 @@
         {{model3}}
       </div>
       <transition name="fade">
-        <div class="meta" v-show="hover1">
+        <div class="meta" v-show="hover3">
           <pre>
             <code>123</code>
           </pre>
         </div>
       </transition>
-      <div class="control" @click.stop="hover1=!hover1">
+      <div class="control" @click.stop="hover3=!hover3">
         <span>显示代码</span>
       </div>
     </div>
@@ -66,13 +66,13 @@
         {{model4}}
       </div>
       <transition name="fade">
-        <div class="meta" v-show="hover1">
+        <div class="meta" v-show="hover4">
           <pre>
             <code>123</code>
           </pre>
         </div>
       </transition>
-      <div class="control" @click.stop="hover1=!hover1">
+      <div class="control" @click.stop="hover4=!hover4">
         <span>显示代码</span>
       </div>
     </div>
@@ -91,7 +91,10 @@ export default {
       model2: null,
       model3: null,
       model4: null,
-      hover1: false
+      hover1: false,
+      hover2: false,
+      hover3: false,
+      hover4: false
     };
   },
   components: {

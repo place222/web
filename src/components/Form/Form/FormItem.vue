@@ -1,52 +1,68 @@
 <template>
-  <div class="form_item" @flur="handleFlur">
-      <label class="form_label">{{label}}</label>
+  <div
+    class="form_item"
+    :class="[{error:validateState ==='error'}]"
+    >
+      <label
+        class="form_label"
+        style="">{{label}}</label>
       <div class="form_content">
         <slot></slot>
+        <span class="form_error">{{validateMessage}}</span>
       </div>
   </div>
 </template>
 
 <script>
-import AsyncValidator from 'async-validator';
+let tags = [
+  "Input",
+  "Radio",
+  "RadioGroup",
+  "CheckBox",
+  "CheckBoxGroup",
+  "Select"
+];
+
+export const VALIDATE_STATE = {
+  Success: "success",
+  Error: "error",
+  Null: "null"
+};
+
+import AsyncValidator from "async-validator";
 
 export default {
+  componentName: "FormItem",
   props: {
     label: String,
-    direction: {}
+    name: String,
+    rules: [Array]
   },
-  methods:{
-    handleFlur:function(){
-      console.log('validate')
+  data() {
+    return {
+      validateMessage: "",
+      validateState: VALIDATE_STATE.Null
+    };
+  },
+  mounted: function() {
+    this.$on("formitem.change", this.handleChange);
+  },
+  methods: {
+    handleChange: function(val) {
+      let rules = {};
+      rules[this.name] = this.rules;
+
+      var validator = new AsyncValidator(rules);
+      validator.validate({ name: val }, (errors, fields) => {
+        if (errors) {
+          this.validateState = VALIDATE_STATE.Error;
+          this.validateMessage = errors[0].message;
+          return;
+        }
+        this.validateState = VALIDATE_STATE.Success;
+        this.validateMessage = "";
+      });
     }
   }
 };
 </script>
-
-
-<style lang="less" scoped>
-.form_item {
-  margin-bottom: 20px;
-  line-height: 35px;
-}
-.form_item::before,
-.form_item::after {
-  content: "";
-  display: table;
-}
-.form_item::after {
-  clear: both;
-}
-.form_label {
-  box-sizing: border-box;
-  float: left;
-  text-align: right;//对齐可以动态控制
-  width: 100px; //这里抽出去
-}
-.form_content {
-  padding: 0 15px;
-  margin-left: 100px;
-}
-</style>
-
-

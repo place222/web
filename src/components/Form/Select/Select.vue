@@ -35,13 +35,7 @@ export default {
       ||_this.$el === event.target
       )
       return;
-      if(_this.popper){
-        _this.show = !_this.show;
-        _this.$nextTick(()=>{
-          _this.popper.destroy();
-          _this.popper = null;
-        })
-      }
+      _this._destory();
     },false)
   },
   methods: {
@@ -56,42 +50,20 @@ export default {
     selectItem: function(val) {
       this.selectValue = val.text;
       this.$emit('input',val.value);
+      this._destory();
+    },
+    _destory:function(){
+      if(this.popper){
+        this.show = !this.show;
+        this.$nextTick(()=>{
+          this.popper.destroy();
+          this.popper = null;
+        })
+      }
     }
   }
 };
 </script>
 
 
-<style lang="less">
-.pop {
-  width: 200px;
-  height: 200px;
-}
-.select {
-  width: 240px;
-  position: relative;
-  & .arrow{
-    width: 35px;
-    height: 35px;
-    border: 1px solid red;
-    position: absolute;
-    right: 0;
-    top:0;
-    box-sizing: border-box;
-  }
-  & > input[type="text"] {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  & > ul {
-    background-color: #fff;
-    border: 1px solid #d8dce5;
-    border-top: 0;
-    width: 240px;
-    padding: 6px 0;
-    box-shadow: 2px 2px 2px #888888;
-    box-sizing: border-box;
-    z-index: 1000;//popup的东西应该从1000开始计算
-  }
-}
-</style>
+

@@ -1,0 +1,23 @@
+.form_item {
+    .clearfix();
+    margin-bottom: @form-item-default-margin-bottom;
+    line-height: @form-item-default-line-height;
+    & .form_label {
+        box-sizing: border-box;
+        float: left;
+        text-align: right; //对齐可以动态控制
+        width: @form-item-default-label-width;
+    }
+    & .form_content {
+        padding: 0 15px;
+        margin-left: @form-item-default-label-width;
+    }
+    & .form_error {
+        color: @brand-danger;
+    }
+    &.error .form_label,
+    &.error input[type="text"] {
+        color: @brand-danger;
+        border-color: @brand-danger;
+    }
+}

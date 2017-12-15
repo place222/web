@@ -1,10 +1,15 @@
 <template>
   <div class="container">
-    <Form direction="">
-      <FormItem label="活动名称11">
+    <Form>
+      <FormItem
+        label="活动名称11"
+        name="name"
+        :rules="[{required:true,message:'名字必填'},{max:10,message:'长度不能超过10个字符'}]">
          <Input v-model="person.name"></Input>
       </FormItem>
-      <FormItem label="活动区域">
+      <FormItem label="活动区域"
+        name="area"
+        :rules="[{required:true,message:'活动区域必填'}]">
         <Select v-model="person.area">
           <Option v-for="item in regions" :key="item.id" :value="`${item.id}`">{{item.name}}</Option>
         </Select>
@@ -22,9 +27,7 @@
           <Radio>线上品牌赞助商</Radio>
           <Radio>线下场地免费</Radio>
       </FormItem>
-       <FormItem>
           <Button @click="handleClick">123</Button>
-      </FormItem>
     </Form>
   </div>
 </template>
@@ -62,11 +65,16 @@ export default {
     Form,
     FormItem
   },
-  created:function(){
-    this.$http.get('http://localhost:3003/region')
-    .then((res)=>{
-      this.regions = res.data
-    })
+  created: function() {
+    this.$http
+      .get("http://localhost:3003/region")
+      .then(res => {
+        this.regions = res.data;
+        return res;
+      })
+      .then(res => {
+        console.log(`我是第二个回调下的${res}`);
+      });
   },
   data() {
     return {
@@ -75,18 +83,16 @@ export default {
         area: 0,
         properties: []
       },
-      regions:[]
+      regions: [],
+      rules: {
+        name: [{ required: true, message: "名字不能为空" }],
+        area: { required: true, message: "区域不能为空" },
+        properties: { required: true, message: "活动性质不能为空" }
+      }
     };
   },
   methods: {
     handleClick: function() {
-      var rules = {
-        name: [
-          { required: true, message: "名字不能为空" }
-        ],
-        area: { required: true, message: "区域不能为空" },
-        properties: { required: true, message: "活动性质不能为空" }
-      };
       var validator = new AsyncValidator(rules);
       validator.validate(
         this.person,
@@ -95,17 +101,17 @@ export default {
           if (errors) {
             console.log(errors);
           }
-          this.$http.post('http://localhost:3003/persons',this.person)
-          .then((res)=>{
-            console.log(res)
-          })
+          this.$http
+            .post("http://localhost:3003/persons", this.person)
+            .then(res => {
+              this.$message("成功");
+            });
         }
       );
     }
   }
 };
 </script>
-
 
 <style lang="less" scoped>
 .container {

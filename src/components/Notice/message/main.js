@@ -17,6 +17,7 @@ const Message = function (options) {
   })
   instance.vm = instance.$mount()
   document.body.appendChild(instance.vm.$el)
+  instance.vm.show = true
   return instance.vm
 }
 

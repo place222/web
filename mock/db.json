@@ -15,6 +15,46 @@
         1
       ],
       "id": 2
+    },
+    {
+      "name": "",
+      "area": 0,
+      "properties": [],
+      "id": 3
+    },
+    {
+      "name": "1231231",
+      "area": 0,
+      "properties": [
+        1
+      ],
+      "id": 4
+    },
+    {
+      "name": "1",
+      "area": 0,
+      "properties": [
+        1
+      ],
+      "id": 5
+    },
+    {
+      "name": "1",
+      "area": 0,
+      "properties": [
+        1,
+        4
+      ],
+      "id": 6
+    },
+    {
+      "name": "123",
+      "area": "2",
+      "properties": [
+        2,
+        1
+      ],
+      "id": 7
     }
   ],
   "menu": [

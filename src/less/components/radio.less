@@ -5,6 +5,11 @@
 
 .radio {
     cursor: pointer;
+    line-height: 1;
+    &:hover,
+    &:active {
+        color: @brand-primary;
+    }
 }
 
 .radio.is-disabled {
@@ -20,14 +25,14 @@
 }
 
 .radio_circular {
-    width: 20px;
-    height: 20px;
+    width: @radio-circular-default-size;
+    height: @radio-circular-default-size;
     border-radius: 100%;
     border: 1px solid @brand-primary;
     display: inline-block;
     box-sizing: border-box;
     position: relative;
-    line-height: 1;
+    vertical-align: middle;
     &:after {
         content: "";
         width: 8px;
