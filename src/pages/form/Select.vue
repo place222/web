@@ -7,11 +7,20 @@
     </Select>
     <p>{{selectValue}}</p>
 
-  <Popper trigger="click" >
-    <template>
-      <button>点击我</button>
-    </template>
-  </Popper>
+    <Popper trigger="click" >
+      <template>
+        <button>点击我</button>
+      </template>
+    </Popper>
+
+    <button @click="show = !show">Toggle</button>
+      <transition
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @enter-cancelled="enterCancelled">
+          <div v-show="show" class="region">hello</div>
+      </transition>
   </div>
 </template>
 
@@ -28,8 +37,30 @@ export default {
   },
   data() {
     return {
-      selectValue: ""
+      selectValue: "",
+      show: false
     };
+  },
+  methods: {
+    beforeEnter: function(el) {
+      el.classList.add('collapse-transition')
+      el.style.height = '0';
+      el.style.paddingTop = 0;
+      el.style.paddingBottom = 0;
+      console.log('进入前')
+    },
+    enter: function(el) {
+      el.style.height = el.scrollHeight + 'px';
+      console.log('进入中')
+    },
+    afterEnter: function(el) {
+      el.classList.remove('collapse-transition')
+      el.style.height='';
+      console.log('进入后')
+    },
+    enterCancelled:function(){
+      console.log('取消了')
+    }
   }
 };
 </script>
@@ -41,5 +72,12 @@ export default {
 }
 button {
   width: 400px;
+}
+.region {
+  height: 400px;
+  background: red;
+}
+.collapse-transition {
+  transition: height 12s;
 }
 </style>
