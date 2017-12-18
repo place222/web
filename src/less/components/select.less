@@ -1,33 +1,53 @@
 .pop {
-    width: 200px;
-    max-height: 240px;
     overflow: auto;
 }
 
 .select {
-    width: 240px;
-    position: relative;
-    & .arrow {
-        width: 35px;
-        height: 35px;
-        border: 1px solid red;
-        position: absolute;
-        right: 0;
-        top: 0;
-        box-sizing: border-box;
-    }
-    &>input[type="text"] {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    &>ul {
+    & ul {
         background-color: #fff;
         border: 1px solid #d8dce5;
         border-top: 0;
-        width: 240px;
         padding: 6px 0;
         box-shadow: 2px 2px 2px #888888;
         box-sizing: border-box;
         z-index: 1000; //popup的东西应该从1000开始计算
+        width: 100%;
+    }
+}
+
+.select__input {
+    position: relative;
+    font-size: 0;
+    min-width: 240px;
+    & .select__arrow {
+        width: 35px;
+        height: 35px;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        border-width: 1px 1px 1px 0;
+        border-style: solid;
+        border-color: #d8dce5;
+        &::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border: 1px solid green;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    &>.select__input_inner {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right-width: 0;
+        min-width: 200px;
+        max-width: 80%;
+        box-sizing: border-box;
     }
 }

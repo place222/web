@@ -6,22 +6,30 @@
       <Option value="3">呵呵3</Option>
     </Select>
     <p>{{selectValue}}</p>
+
+  <Popper trigger="click" >
+    <template>
+      <button>点击我</button>
+    </template>
+  </Popper>
   </div>
 </template>
 
 
 <script>
 import Select from "@/components/Form/Select/Select";
-import Option from "@/components/Form/Select/Option"
+import Option from "@/components/Form/Select/Option";
+import Popper from "@/components/Popper";
 export default {
   components: {
     Select,
-    Option
+    Option,
+    Popper
   },
-  data(){
+  data() {
     return {
-      selectValue:''
-    }
+      selectValue: ""
+    };
   }
 };
 </script>
@@ -30,5 +38,8 @@ export default {
 <style lang="less" scoped>
 .container {
   padding: 20px;
+}
+button {
+  width: 400px;
 }
 </style>
