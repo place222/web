@@ -1,5 +1,7 @@
 <template>
-  <router-view></router-view>
+  <div class="content">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -14,3 +16,9 @@ export default {
 };
 </script>
 
+<style lang="less" scoped>
+.content{
+  min-height: 900px;
+  background: #f0f0f0;
+}
+</style>

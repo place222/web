@@ -67,6 +67,7 @@ export default {
 .main-sidebar {
   width: 230px;
   background-color: rgb(34, 45, 50);
+  height: 100%; //看住这个搞出来个滚动条
   position: absolute;
   & a {
     padding: 10px 12px;

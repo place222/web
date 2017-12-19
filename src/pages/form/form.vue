@@ -1,41 +1,76 @@
 <template>
-  <div class="container">
-    <Form>
-      <FormItem
-        label="活动名称11"
-        name="name"
-        :rules="[{required:true,message:'名字必填'},{max:10,message:'长度不能超过10个字符'}]">
-         <Input v-model="person.name"></Input>
-      </FormItem>
-      <FormItem label="活动区域"
-        name="area"
-        :rules="[{required:true,message:'活动区域必填'}]">
-        <Select v-model="person.area">
-          <Option v-for="item in regions" :key="item.id" :value="`${item.id}`">{{item.name}}</Option>
-        </Select>
-      </FormItem>
-      <FormItem label="活动时间"></FormItem>
-      <FormItem label="活动性质">
-        <CheckBoxGroup v-model="person.properties">
-          <CheckBox :value="1">美食餐厅线上活动x</CheckBox>
-          <CheckBox :value="2">地推活动x</CheckBox>
-          <CheckBox :value="3">线下主题活动x</CheckBox>
-          <CheckBox :value="4">单纯品牌曝光xyz</CheckBox>
-        </CheckBoxGroup>
-      </FormItem>
-      <FormItem label="特殊资源">
-          <Radio>线上品牌赞助商</Radio>
-          <Radio>线下场地免费</Radio>
-      </FormItem>
-          <Button @click="handleClick">123</Button>
-    </Form>
-  </div>
+<Container>
+    <ContainerContent>
+      <Form>
+        <FormItem
+          label="活动名称11"
+          name="name"
+          :rules="[{required:true,message:'名字必填'},{max:10,message:'长度不能超过10个字符'}]">
+          <Input v-model="person.name"></Input>
+        </FormItem>
+        <FormItem label="活动区域"
+          name="area"
+          :rules="[{required:true,message:'活动区域必填'}]">
+          <Select v-model="person.area">
+            <Option v-for="item in regions" :key="item.id" :value="`${item.id}`">{{item.name}}</Option>
+          </Select>
+        </FormItem>
+        <FormItem label="活动时间"></FormItem>
+        <FormItem label="活动性质">
+          <CheckBoxGroup v-model="person.properties">
+            <CheckBox :value="1">美食餐厅线上活动x</CheckBox>
+            <CheckBox :value="2">地推活动x</CheckBox>
+            <CheckBox :value="3">线下主题活动x</CheckBox>
+            <CheckBox :value="4">单纯品牌曝光xyz</CheckBox>
+          </CheckBoxGroup>
+        </FormItem>
+        <FormItem label="特殊资源">
+            <Radio>线上品牌赞助商</Radio>
+            <Radio>线下场地免费</Radio>
+        </FormItem>
+            <Button @click="handleClick">123</Button>
+      </Form>
+    </ContainerContent>
+    <ContainerContent>
+      <Form>
+        <FormItem
+          label="活动名称11"
+          name="name"
+          :rules="[{required:true,message:'名字必填'},{max:10,message:'长度不能超过10个字符'}]">
+          <Input v-model="person.name"></Input>
+        </FormItem>
+        <FormItem label="活动区域"
+          name="area"
+          :rules="[{required:true,message:'活动区域必填'}]">
+          <Select v-model="person.area">
+            <Option v-for="item in regions" :key="item.id" :value="`${item.id}`">{{item.name}}</Option>
+          </Select>
+        </FormItem>
+        <FormItem label="活动时间"></FormItem>
+        <FormItem label="活动性质">
+          <CheckBoxGroup v-model="person.properties">
+            <CheckBox :value="1">美食餐厅线上活动x</CheckBox>
+            <CheckBox :value="2">地推活动x</CheckBox>
+            <CheckBox :value="3">线下主题活动x</CheckBox>
+            <CheckBox :value="4">单纯品牌曝光xyz</CheckBox>
+          </CheckBoxGroup>
+        </FormItem>
+        <FormItem label="特殊资源">
+            <Radio>线上品牌赞助商</Radio>
+            <Radio>线下场地免费</Radio>
+        </FormItem>
+            <Button @click="handleClick">123</Button>
+      </Form>
+    </ContainerContent>
+</Container>
 </template>
 
 
 <script>
 import GridRow from "@/components/Grid/GridRow";
 import GridCol from "@/components/Grid/Gridcol";
+import Container from '@/components/Grid/Container'
+import ContainerContent from '@/components/Grid/ContainerContent'
 
 import CheckBox from "@/components/Form/CheckBox/CheckBox";
 import CheckBoxGroup from "@/components/Form/CheckBox/CheckBoxGroup";
@@ -55,6 +90,8 @@ export default {
   components: {
     GridRow,
     GridCol,
+    Container,
+    ContainerContent,
     CheckBox,
     CheckBoxGroup,
     Radio,
@@ -112,15 +149,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-.container {
-  width: 600px;
-  margin: 0 auto;
-  padding: 50px;
-}
-.row {
-  border: 1px solid #eee;
-}
-
-</style>

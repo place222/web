@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="container">
     <!-- Main Header -->
     <MainHeader></MainHeader>
 
     <MainSidebar></MainSidebar>
 
-    <MainContent class="container"></MainContent>
+    <MainContent class="content"></MainContent>
 
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.container{
+.content {
   margin-left: 230px;
 }
 </style>

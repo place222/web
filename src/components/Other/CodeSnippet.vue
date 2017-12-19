@@ -7,7 +7,7 @@
 
 <script>
 import hljs from "highlight.js";
-import "../../../node_modules/highlight.js/styles/github.css";
+import "../../../node_modules/highlight.js/styles/monokai.css";
 export default {
   props: {
     code: {
