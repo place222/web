@@ -12,19 +12,12 @@
       </div>
       <ElCollapseTransition>
         <div class="meta" v-show="hover1">
-          <pre>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-          </pre>
+          <CodeSnippet :code="`
+    <div class='exsample'>
+      <Radio v-model='model1' value='123'>可以</Radio>
+      <Radio v-model='model1' value='1223'>不可以</Radio>
+      {{model1}}
+    </div>`"></CodeSnippet>
         </div>
       </ElCollapseTransition>
       <div class="control" @click.stop="hover1=!hover1">
@@ -37,23 +30,16 @@
           <Radio v-model="model2" :value="false">不可以</Radio>
           {{model2}}
       </div>
-      <transition name="fade">
+      <ElCollapseTransition>
         <div class="meta" v-show="hover2">
-          <pre>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-            <code>123</code>
-          </pre>
+          <CodeSnippet :code='`
+    <div class="exsample">
+      <Radio v-model="model2" :value="true">可以</Radio>
+      <Radio v-model="model2" :value="false">不可以</Radio>
+      {{model2}}
+    </div>`'></CodeSnippet>
         </div>
-      </transition>
+      </ElCollapseTransition>
       <div class="control" @click.stop="hover2=!hover2">
         <span>显示代码</span>
       </div>
@@ -65,13 +51,16 @@
         <Radio v-model="model3" :value="'1223'" disabled>不可以</Radio>
         {{model3}}
       </div>
-      <transition name="fade">
+      <ElCollapseTransition>
         <div class="meta" v-show="hover3">
-          <pre>
-            <code>123</code>
-          </pre>
+          <CodeSnippet :code='`
+    <div class="exsample">
+      <Radio v-model="model3" value="123" disabled>可以</Radio>
+      <Radio v-model="model3" value="1223" disabled>不可以</Radio>
+      {{model3}}
+    </div>`'></CodeSnippet>
         </div>
-      </transition>
+      </ElCollapseTransition>
       <div class="control" @click.stop="hover3=!hover3">
         <span>显示代码</span>
       </div>
@@ -85,18 +74,22 @@
         </RadioGroup>
         {{model4}}
       </div>
-      <transition name="fade">
+      <ElCollapseTransition>
         <div class="meta" v-show="hover4">
-          <pre>
-            <code>123</code>
-          </pre>
+          <CodeSnippet :code='`
+    <div class="exsample">
+      <RadioGroup  v-model="model4">
+        <Radio value="123">可以</Radio>
+        <Radio value="1223">不可以</Radio>
+      </RadioGroup>
+      {{model4}}
+    </div>`'></CodeSnippet>
         </div>
-      </transition>
+      </ElCollapseTransition>
       <div class="control" @click.stop="hover4=!hover4">
         <span>显示代码</span>
       </div>
     </div>
-    <h3>按钮样式</h3>
   </div>
 </template>
 
@@ -104,6 +97,7 @@
 import Radio from "@/components/Form/Radio/Radio";
 import RadioGroup from "@/components/Form/Radio/RadioGroup";
 import ElCollapseTransition from "@/mixins/transitions/collapse-transition";
+import CodeSnippet from '@/components/Other/CodeSnippet'
 
 export default {
   data() {
@@ -121,7 +115,16 @@ export default {
   components: {
     Radio,
     RadioGroup,
+    CodeSnippet,
     ElCollapseTransition
+  },
+  created:function(){
+      console.log(`<div class="exsample">
+        <Radio v-model="model1" value="123">可以</Radio>
+        <Radio v-model="model1" value="1223">不可以</Radio>
+        {{model1}}
+      </div>`)
+
   }
 };
 </script>
