@@ -122,4 +122,5 @@ export default {
 .row {
   border: 1px solid #eee;
 }
+
 </style>

@@ -1,19 +1,9 @@
-<template>
-  <div ref="component">
-    <div ref="reference" class="ref">
-      <slot>
-      </slot>
-    </div>
-       <div ref="pop" class="pop" :class="arrow?'arrow__true':''" v-show="show">
-        <div ref="arrow" :class="arrow?'arrow':''"></div>
-        <slot name="pop"><span></span></slot>
-      </div>
-  </div>
-</template>
+
 
 <script>
 import Popper from "popper.js";
 import debounce from "../mixins/debounce";
+import CollapseTransition from '@/mixins/transitions/collapse-transition'
 
 export const TRIGGER = {
   hover: "hover",
@@ -23,6 +13,9 @@ export const TRIGGER = {
 var popInstance = null;
 
 export default {
+  components:{
+    CollapseTransition
+  },
   props: {
     offset: {
       type: Number
@@ -86,7 +79,7 @@ export default {
       if (!popInstance) {
         this.timeout = setTimeout(() => {
           this.show = !this.show;
-          this._initPop();
+          this.$nextTick(()=>{this._initPop()})
         }, this.delay.show);
       }
     },
@@ -95,7 +88,7 @@ export default {
       if (popInstance) {
         this.timeout = setTimeout(() => {
           this.show = !this.show;
-          this._disposePop();
+          this.$nextTick(()=>{this._disposePop()})
         }, this.delay.hide);
       }
     },
@@ -131,27 +124,42 @@ export default {
   }
 };
 </script>
-
+<template>
+  <div ref="component" class="popper">
+    <div ref="reference" class="popper__reference">
+      <slot>
+      </slot>
+    </div>
+      <CollapseTransition>
+        <div ref="pop" class="popper_pop" :class="arrow?'arrow__true':''" v-show="show">
+          <div ref="arrow" :class="arrow?'arrow':''"></div>
+              <slot name="pop"><span></span></slot>
+        </div>
+      </CollapseTransition>
+  </div>
+</template>
 <style lang="less" scoped>
-.ref {
-  display: inline-block;
+.popper {
+  position: relative;
 }
-.pop {
+.popper_pop {
   min-height: 30px;
   background: #fff;
-  border-radius: 3px;
-  overflow: visible;
+  overflow: auto;
+  width: 100%;
+  z-index: 1000;
+  position: absolute;
+  box-sizing: border-box;
   &.arrow__true{
     margin-top: 5px;
   }
 }
-
 .arrow {
   border-width: 0 5px 5px 5px;
   border-left-color: transparent !important;
   border-right-color: transparent !important;
   border-top-color: transparent !important;
-  border-color: red;
+  border-color: #ccc;
   border-style: solid;
   top: -5px;
   left: calc(50% - 5px);

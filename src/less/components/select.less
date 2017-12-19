@@ -13,41 +13,40 @@
         z-index: 1000; //popup的东西应该从1000开始计算
         width: 100%;
     }
+
+    &:hover .select__input i{
+      transform: rotate(90deg);
+    }
 }
 
 .select__input {
     position: relative;
     font-size: 0;
-    min-width: 240px;
+    display: inline-block;
+    width: 100%;
     & .select__arrow {
-        width: 35px;
-        height: 35px;
-        box-sizing: border-box;
         display: inline-block;
         vertical-align: middle;
-        position: relative;
-        border-width: 1px 1px 1px 0;
-        border-style: solid;
-        border-color: #d8dce5;
-        &::after {
-            content: "";
-            width: 10px;
-            height: 10px;
-            border: 1px solid green;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            margin: auto;
+        font-size: 14px;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        &>i {
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            transform: rotate(-90deg);
+            transition: transform .2s;
         }
     }
     &>.select__input_inner {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        border-right-width: 0;
         min-width: 200px;
-        max-width: 80%;
         box-sizing: border-box;
+        padding-right: 35px;
+        font-size: 14px;
     }
 }

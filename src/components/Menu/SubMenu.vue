@@ -5,22 +5,21 @@
       <span><slot name="title"></slot></span>
       <i class="fa fa-caret-left fa-lg pull-right"></i>
     </a>
-    <transition
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @after-enter="afterEnter"
-      @before-leave="beforeLeave"
-      @leave = "leave"
-      @after-leave ="afterLeave">
+    <CollapseTransition>
       <ul v-show="show">
         <slot></slot>
       </ul>
-    </transition>
+    </CollapseTransition>
   </li>
 </template>
 
 <script>
+import CollapseTransition from "@/mixins/transitions/collapse-transition";
+
 export default {
+  components: {
+    CollapseTransition
+  },
   props: {
     icon: {
       type: String
@@ -32,53 +31,6 @@ export default {
     };
   },
   methods: {
-    beforeEnter: function(el) {
-      el.dataset.oldPaddingTop = el.style.paddingTop;
-      el.dataset.oldPaddingBottom = el.style.paddingBottom;
-
-      el.style.height = "0";
-      el.style.paddingTop = 0;
-      el.style.paddingBottom = 0;
-    },
-    enter: function(el) {
-      el.dataset.oldOverflow = el.style.overflow;
-      if (el.scrollHeight !== 0) {
-        el.style.height = el.scrollHeight + "px";
-        el.style.paddingTop = el.dataset.oldPaddingTop;
-        el.style.paddingBottom = el.dataset.oldPaddingBottom;
-      } else {
-        el.style.height = "";
-        el.style.paddingTop = el.dataset.oldPaddingTop;
-        el.style.paddingBottom = el.dataset.oldPaddingBottom;
-      }
-      el.style.overflow = "hidden";
-    },
-    afterEnter: function(el) {
-      el.style.height = "";
-      el.style.overflow = el.dataset.oldOverflow;
-    },
-    beforeLeave: function(el) {
-      if (!el.dataset) el.dataset = {};
-      el.dataset.oldPaddingTop = el.style.paddingTop;
-      el.dataset.oldPaddingBottom = el.style.paddingBottom;
-      el.dataset.oldOverflow = el.style.overflow;
-
-      el.style.height = el.scrollHeight + "px";
-      el.style.overflow = "hidden";
-    },
-    leave: function(el) {
-      if (el.scrollHeight !== 0) {
-        el.style.height = 0;
-        el.style.paddingTop = 0;
-        el.style.paddingBottom = 0;
-      }
-    },
-    afterLeave: function(el) {
-      el.style.height = "";
-      el.style.overflow = el.dataset.oldOverflow;
-      el.style.paddingTop = el.dataset.oldPaddingTop;
-      el.style.paddingBottom = el.dataset.oldPaddingBottom;
-    }
   }
 };
 </script>
