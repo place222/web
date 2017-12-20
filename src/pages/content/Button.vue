@@ -1,5 +1,21 @@
 <template>
 <Container>
+  <h4>按钮组</h4>
+  <GridRow>
+      <GridCol>
+        <ContainerContent>
+           <CodeCollapse :code='``'>
+              <ButtonGroup>
+                <Button icon="book"></Button>
+                <Button icon="book"></Button>
+                <Button icon="book"></Button>
+                <Button icon="book"></Button>
+                <Button icon="book"></Button>
+              </ButtonGroup>
+           </CodeCollapse>
+        </ContainerContent>
+      </GridCol>
+  </GridRow>
   <h4>按钮类型</h4>
   <GridRow>
       <GridCol>
@@ -23,7 +39,45 @@
   </GridRow>
 
   <h4>图标按钮</h4>
+  <GridRow>
+      <GridCol>
+        <ContainerContent>
+           <CodeCollapse :code='`
+  <Button icon="address-book"></Button>
+  <Button icon="address-card"></Button>
+  <Button icon="anchor"></Button>
+  <Button icon="book"></Button>
+  <Button icon="adjust">带文字哦</Button>`'>
+              <Button icon="address-book"></Button>
+              <Button icon="address-card"></Button>
+              <Button icon="anchor"></Button>
+              <Button icon="book"></Button>
+              <Button icon="adjust">带文字哦</Button>
+           </CodeCollapse>
+        </ContainerContent>
+      </GridCol>
+  </GridRow>
   <h4>按钮尺寸</h4>
+  <GridRow>
+      <GridCol>
+        <ContainerContent>
+           <CodeCollapse :code='`
+  <Button>默认按钮</Button>
+  <Button type="primary">主按钮</Button>
+  <Button type="success">成功按钮</Button>
+  <Button type="info">信息按钮</Button>
+  <Button type="warning">警告按钮</Button>
+  <Button type="danger">错误按钮</Button>`'>
+              <Button>默认按钮</Button>
+              <Button type="primary">主按钮</Button>
+              <Button type="success">成功按钮</Button>
+              <Button type="info">信息按钮</Button>
+              <Button type="warning">警告按钮</Button>
+              <Button type="danger">错误按钮</Button>
+           </CodeCollapse>
+        </ContainerContent>
+      </GridCol>
+  </GridRow>
   <h4>不可用状态</h4>
     <GridRow>
       <GridCol>
@@ -46,7 +100,7 @@
       </GridCol>
   </GridRow>
 
-  <h4>按钮组</h4>
+
 </Container>
 </template>
 
@@ -57,6 +111,7 @@ import Container from "@/components/Grid/Container";
 import ContainerContent from "@/components/Grid/ContainerContent";
 import CodeCollapse from "@/components/Other/CodeCollapse";
 import Button from "@/components/Button/Button";
+import ButtonGroup from '@/components/Button/ButtonGroup';
 
 
 export default {
@@ -64,6 +119,7 @@ export default {
     GridRow,
     GridCol,
     Button,
+    ButtonGroup,
     Container,
     ContainerContent,
     CodeCollapse

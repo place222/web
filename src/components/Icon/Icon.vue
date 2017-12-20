@@ -1,5 +1,6 @@
+
 <template>
-  <i :class="'icon_'+name"></i>
+  <i :class="['fa','fa-'+name]"></i>
 </template>
 
 <script>
