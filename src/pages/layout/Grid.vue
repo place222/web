@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <h1>Grid栅格</h1>
-    <h2>基础栅格</h2>
-    <h4>水平排列,Grid-Row Grid-Col既可以构建一个栅格系统</h4>
+
+    <h4>基础栅格</h4>
+    <p>水平排列,Grid-Row Grid-Col既可以构建一个栅格系统</p>
+
     <grid-row>
       <grid-col :span="24">
         <div class="content">col-24</div>
@@ -68,16 +70,15 @@ export default {
 
 
 <style lang="less" scoped>
-.content{
-  background-color: rgba(0,160,233,.7);
+.content {
+  background-color: rgba(0, 160, 233, 0.7);
   line-height: 30px;
   min-height: 30px;
   text-align: center;
-  color:#fff;
+  color: #fff;
 }
 .container {
   padding: 20px;
 }
-
 </style>
 

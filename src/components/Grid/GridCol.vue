@@ -7,7 +7,7 @@ export default {
     },
     span: {
       type: Number,
-      default: 12
+      default: 24
     },
     offset: Number
   },
@@ -30,6 +30,7 @@ export default {
 
 
 <style lang="less" scoped>
+
 .col-24 {
   width: 100%;
 }

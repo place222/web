@@ -34,5 +34,8 @@ export default {
 </script>
 
 <style>
-
+pre {
+  margin: 0;
+  padding: 10px;
+}
 </style>

@@ -11,11 +11,7 @@ export default {
     }
   },
   render(h) {
-    return h(
-      this.tag,
-      { class: ["layout"]},
-      this.$slots.default
-    );
+    return h(this.tag, { class: ["layout"] }, this.$slots.default);
   }
 };
 </script>

@@ -16,9 +16,9 @@ export default {
       default: false
     }
   },
-  methods:{
-    handleClick:function(){
-      this.$emit('click');
+  methods: {
+    handleClick: function() {
+      this.$emit("click");
     }
   }
 };
