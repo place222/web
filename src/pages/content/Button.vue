@@ -62,15 +62,15 @@
       <GridCol>
         <ContainerContent>
            <CodeCollapse :code='`
-  <Button>默认按钮</Button>
-  <Button type="primary">主按钮</Button>
-  <Button type="success">成功按钮</Button>
+  <Button size="small">默认按钮</Button>
+  <Button size="large" type="primary">主按钮</Button>
+  <Button size="small" type="success">成功按钮</Button>
   <Button type="info">信息按钮</Button>
   <Button type="warning">警告按钮</Button>
   <Button type="danger">错误按钮</Button>`'>
-              <Button>默认按钮</Button>
-              <Button type="primary">主按钮</Button>
-              <Button type="success">成功按钮</Button>
+              <Button size="small">默认按钮</Button>
+              <Button size="large" type="primary">主按钮</Button>
+              <Button size="small" type="success">成功按钮</Button>
               <Button type="info">信息按钮</Button>
               <Button type="warning">警告按钮</Button>
               <Button type="danger">错误按钮</Button>

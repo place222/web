@@ -26,8 +26,13 @@ export default {
   },
   computed: {
     result() {
-      const highlighted = hljs.highlight(this.lang, this.code.trim());
-      return highlighted.value;
+      //<*>需要更改类型检查
+      if (this.code) {
+        const highlighted = hljs.highlight(this.lang, this.code.trim());
+        return highlighted.value;
+      } else {
+        return "";
+      }
     }
   }
 };

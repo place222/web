@@ -1,13 +1,17 @@
 input[type="text"] {
     width: 100%;
-    min-height: 35px;
-    padding: 0 10px;
-    color: #5a5e66;
+    min-height: @input-default-min-height;
+    padding: 0 @padding-base-horizontal;
+    color: @font-color;
     box-sizing: border-box;
-    border: 1px solid #d8dce5;
-    border-radius: 4px;
+    border: 1px solid @input-default-border-color;
+    border-radius: @input-default-border-radius;
     outline: none;
     &:focus {
         border-color: @brand-primary;
     }
+}
+
+input[disabled]:hover {
+    cursor: not-allowed;
 }

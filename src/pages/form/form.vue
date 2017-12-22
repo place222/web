@@ -76,7 +76,7 @@ import CheckBox from "@/components/Form/CheckBox/CheckBox";
 import CheckBoxGroup from "@/components/Form/CheckBox/CheckBoxGroup";
 
 import Radio from "@/components/Form/Radio/Radio";
-import Input from "@/components/Form/Input";
+import Input from "@/components/Form/Input/Input";
 import Select from "@/components/Form/Select/Select";
 import Option from "@/components/Form/Select/Option";
 import Button from "@/components/Button/Button";

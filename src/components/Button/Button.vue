@@ -1,6 +1,6 @@
 <template>
   <button class="btn"
-          :class="[`btn-${this.type}`
+          :class="[`btn-${this.type}`,`btn-${size}`,
                   ,disabled?'btn-disabled':'']"
            @click.stop="handleClick">
     <Icon v-if="showIcon" :name="icon"></Icon>
@@ -9,6 +9,12 @@
 </template>
 
 <script>
+const BUTTON_SIZE = ["normal", "large", "small"];
+function oneOf(val, arrs) {
+  if (Array.isArray(arrs)) {
+    return arrs.indexOf(val) != -1;
+  }
+}
 import Icon from "@/components/Icon/Icon";
 export default {
   components: {
@@ -21,7 +27,10 @@ export default {
     },
     size: {
       type: String,
-      default: "normal"
+      default: "normal",
+      validator: function(val) {
+        return oneOf(val, BUTTON_SIZE);
+      }
     },
     icon: {
       type: String
