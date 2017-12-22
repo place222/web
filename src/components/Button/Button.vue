@@ -2,7 +2,7 @@
   <button class="btn"
           :class="[`btn-${this.type}`,`btn-${size}`,
                   ,disabled?'btn-disabled':'']"
-           @click.stop="handleClick">
+          @click="handleClick">
     <Icon v-if="showIcon" :name="icon"></Icon>
     <slot></slot>
   </button>
@@ -46,9 +46,10 @@ export default {
       else return false;
     }
   },
-  methods: {
-    handleClick: function() {
-      this.$emit("click");
+  methods:{
+    handleClick(){
+      console.log('click')
+      this.$emit('click')
     }
   }
 };

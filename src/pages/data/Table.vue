@@ -19,8 +19,8 @@
               <TableCol name="生日" property="createTime"></TableCol>
               <TableCol name="操作">
                 <template slot-scope="prop">
-                  <button @click.stop="handleClick(prop.row)">自定义按钮</button>
-                  <button @click.stop="handleClick2(prop.row)">自定义按钮2</button>
+                  <Button type="primary" @click="handleClick(prop.row)">自定义按钮</Button>
+                  <Button type="primary" @click="handleClick2(prop.row)">自定义按钮2</Button>
                 </template>
               </TableCol>
             </Table>
@@ -40,6 +40,7 @@ import CodeCollapse from "@/components/Other/CodeCollapse";
 import Table from "@/components/Data/Table/Table";
 import TableCol from "@/components/Data/Table/TableCol";
 import TableCell from "@/components/Data/Table/TableCell";
+import Button from '@/components/Button/Button'
 
 export default {
   components: {
@@ -50,7 +51,8 @@ export default {
     CodeCollapse,
     Table,
     TableCol,
-    TableCell
+    TableCell,
+    Button
   },
   methods: {
     handleClick: function(row) {
