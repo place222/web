@@ -40,7 +40,7 @@ import CodeCollapse from "@/components/Other/CodeCollapse";
 import Table from "@/components/Data/Table/Table";
 import TableCol from "@/components/Data/Table/TableCol";
 import TableCell from "@/components/Data/Table/TableCell";
-import Button from '@/components/Button/Button'
+import Button from "@/components/Button/Button";
 
 export default {
   components: {
@@ -54,17 +54,21 @@ export default {
     TableCell,
     Button
   },
+  beforeCreate() {
+    var set = new Set('s','sd')
+    console.log(Array.from(set))
+  },
   methods: {
     handleClick: function(row) {
       this.current = row;
     },
-    handleClick2:function(row){
-      this.list.push({id:4,name:'sdfsdfs',createTime:'2019-0'})
+    handleClick2: function(row) {
+      this.list.push({ id: 4, name: "sdfsdfs", createTime: "2019-0" });
     }
   },
   data() {
     return {
-      current:{},
+      current: {},
       list: [
         { id: 1, name: "第一个", createTime: "2017-02-03" },
         { id: 2, name: "第一个", createTime: "2017-02-03" },
