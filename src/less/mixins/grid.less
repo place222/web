@@ -1,0 +1,72 @@
+//
+.container-fixed(@gutter:@grid-gutter-width) {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: floor(@gutter/2);
+    padding-right: ceil(@gutter/2);
+    &:extend(.clearfix all);
+}
+
+.make-row(@gutter:@grid-gutter-width){
+  margin-left:  ceil((@gutter / -2));
+  margin-right: floor((@gutter / -2));
+  &:extend(.clearfix all);
+}
+
+//这个是默认每个单元格的样式
+.make-grid-columns() {
+    // Common styles for all sizes of grid columns, widths 1-12
+    .col(@index) {
+        // initial
+        @item: ~".col-@{index},";
+        .col((@index + 1), @item);
+    }
+    .col(@index, @list) when (@index =< @grid-columns) {
+        // general; "=<" isn't a typo
+        @item: ~".col-@{index}, ";
+        .col((@index + 1), ~"@{list}, @{item}");
+    }
+    .col(@index, @list) when (@index > @grid-columns) {
+        // terminal
+        @{list} {
+            position: relative; // Prevent columns from collapsing when empty
+            min-height: 1px; // Inner gutter via padding
+            padding-left: ceil((@grid-gutter-width / 2));
+            padding-right: floor((@grid-gutter-width / 2));
+        }
+    }
+    .col(1); // kickstart it
+}
+
+//非flex 布局采用浮动
+.float-grid-columns() {
+    .col(@index) {
+        // initial
+        @item: ~".col-@{index}";
+        .col((@index + 1), @item);
+    }
+    .col(@index, @list) when (@index =< @grid-columns) {
+        // general
+        @item: ~".col-@{index}";
+        .col((@index + 1), ~"@{list}, @{item}");
+    }
+    .col(@index, @list) when (@index > @grid-columns) {
+        // terminal
+        @{list} {
+            float: left;
+        }
+    }
+    .col(1); // kickstart it
+}
+
+//计算宽度
+.calc-grid-column(@index, @type) when (@type =width) and (@index >0) {
+    .col-@{index} {
+        width: percentage(@index/@grid-columns)
+    }
+}
+
+.loop-grid-columns(@index, @type) when (@index >=0) {
+    .calc-grid-column(@index, @type); // next iteration
+    .loop-grid-columns((@index - 1), @type);
+}

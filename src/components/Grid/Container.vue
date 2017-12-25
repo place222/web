@@ -1,12 +1,7 @@
 <template>
-  <div class="body">
+  <div class="container">
     <slot></slot>
   </div>
 </template>
 
-<style lang="less" scoped>
-.body {
-  padding: 20px;
-}
-</style>
 
