@@ -9,9 +9,9 @@
       tbody 标签 display:table-row-group 只有border contentarea 没有margin padding<br/>
       td 标签 display:table-cell
     </p>
-    <GridRow>
-      <GridCol>
-        <ContainerContent>
+    <Row>
+      <Col>
+        <Content>
           <CodeCollapse :code="``">
             <Table :list="list">
               <TableCol name="编号" property="id"></TableCol>
@@ -26,16 +26,16 @@
             </Table>
             {{current}}
           </CodeCollapse>
-        </ContainerContent>
-      </GridCol>
-    </GridRow>
+        </Content>
+      </Col>
+    </Row>
   </Container>
 </template>
 <script>
-import GridRow from "@/components/Grid/GridRow";
-import GridCol from "@/components/Grid/GridCol";
+import Row from "@/components/Grid/Row";
+import Col from "@/components/Grid/Col";
 import Container from "@/components/Grid/Container";
-import ContainerContent from "@/components/Grid/ContainerContent";
+import Content from "@/components/Other/Content";
 import CodeCollapse from "@/components/Other/CodeCollapse";
 import Table from "@/components/Data/Table/Table";
 import TableCol from "@/components/Data/Table/TableCol";
@@ -44,10 +44,10 @@ import Button from "@/components/Button/Button";
 
 export default {
   components: {
-    GridRow,
-    GridCol,
+    Row,
+    Col,
     Container,
-    ContainerContent,
+    Content,
     CodeCollapse,
     Table,
     TableCol,

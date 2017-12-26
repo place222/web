@@ -1,6 +1,6 @@
 <template>
 <Container>
-    <ContainerContent>
+    <Content>
       <Form>
         <FormItem
           label="活动名称11"
@@ -30,8 +30,8 @@
         </FormItem>
             <Button @click="handleClick">123</Button>
       </Form>
-    </ContainerContent>
-    <ContainerContent>
+    </Content>
+    <Content>
       <Form>
         <FormItem
           label="活动名称11"
@@ -61,16 +61,16 @@
         </FormItem>
             <Button @click="handleClick">123</Button>
       </Form>
-    </ContainerContent>
+    </Content>
 </Container>
 </template>
 
 
 <script>
-import GridRow from "@/components/Grid/GridRow";
-import GridCol from "@/components/Grid/Gridcol";
+import Row from "@/components/Grid/Row";
+import Col from "@/components/Grid/Col";
 import Container from '@/components/Grid/Container'
-import ContainerContent from '@/components/Grid/ContainerContent'
+import Content from '@/components/Other/Content'
 
 import CheckBox from "@/components/Form/CheckBox/CheckBox";
 import CheckBoxGroup from "@/components/Form/CheckBox/CheckBoxGroup";
@@ -88,10 +88,10 @@ import AsyncValidator from "async-validator";
 
 export default {
   components: {
-    GridRow,
-    GridCol,
+    Row,
+    Col,
     Container,
-    ContainerContent,
+    Content,
     CheckBox,
     CheckBoxGroup,
     Radio,

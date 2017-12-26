@@ -1,3 +1,7 @@
+
+.clearfix{
+  .clearfix()
+}
 //
 .container-fixed(@gutter:@grid-gutter-width) {
     margin-right: auto;
@@ -18,12 +22,12 @@
     // Common styles for all sizes of grid columns, widths 1-12
     .col(@index) {
         // initial
-        @item: ~".col-@{index},";
+        @item: ~".col-@{index}";
         .col((@index + 1), @item);
     }
     .col(@index, @list) when (@index =< @grid-columns) {
         // general; "=<" isn't a typo
-        @item: ~".col-@{index}, ";
+        @item: ~".col-@{index}";
         .col((@index + 1), ~"@{list}, @{item}");
     }
     .col(@index, @list) when (@index > @grid-columns) {
@@ -33,6 +37,7 @@
             min-height: 1px; // Inner gutter via padding
             padding-left: ceil((@grid-gutter-width / 2));
             padding-right: floor((@grid-gutter-width / 2));
+            box-sizing: border-box;
         }
     }
     .col(1); // kickstart it

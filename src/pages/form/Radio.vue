@@ -4,9 +4,9 @@
     <p>在一组备选项中进行单选</p>
 
     <h4>基础用法</h4>
-    <GridRow>
-      <GridCol :span='12'>
-        <ContainerContent>
+    <Row>
+      <Col :span='12'>
+        <Content>
           <CodeCollapse :code="`
     <div class='exsample'>
       <Radio v-model='model1' value='123'>可以</Radio>
@@ -17,10 +17,10 @@
               <Radio v-model="model1" value="1223">不可以</Radio>
               {{model1}}
           </CodeCollapse>
-      </ContainerContent>
-      </GridCol>
-      <GridCol :span='12'>
-        <ContainerContent>
+      </Content>
+      </Col>
+      <Col :span='12'>
+        <Content>
           <CodeCollapse :code='`
     <div class="exsample">
       <Radio v-model="model2" :value="true">可以</Radio>
@@ -31,13 +31,13 @@
                 <Radio v-model="model2" :value="false">不可以</Radio>
                 {{model2}}
           </CodeCollapse>
-        </ContainerContent>
-      </GridCol>
-    </GridRow>
+        </Content>
+      </Col>
+    </Row>
     <h4>禁用状态</h4>
-    <GridRow>
-      <GridCol>
-        <ContainerContent>
+    <Row>
+      <Col>
+        <Content>
            <CodeCollapse :code='`
     <div class="exsample">
       <Radio v-model="model3" value="123" disabled>可以</Radio>
@@ -48,14 +48,14 @@
               <Radio v-model="model3" :value="'1223'" disabled>不可以</Radio>
               {{model3}}
           </CodeCollapse>
-        </ContainerContent>
-      </GridCol>
-    </GridRow>
+        </Content>
+      </Col>
+    </Row>
 
     <h4>分组</h4>
-    <GridRow>
-      <GridCol>
-        <ContainerContent>
+    <Row>
+      <Col>
+        <Content>
           <CodeCollapse :code='`
     <div class="exsample">
       <RadioGroup  v-model="model4">
@@ -70,9 +70,9 @@
               </RadioGroup>
               {{model4}}
           </CodeCollapse>
-      </ContainerContent>
-      </GridCol>
-    </GridRow>
+      </Content>
+      </Col>
+    </Row>
   </Container>
 </template>
 
@@ -80,10 +80,10 @@
 import Radio from "@/components/Form/Radio/Radio";
 import RadioGroup from "@/components/Form/Radio/RadioGroup";
 import CodeCollapse from "@/components/Other/CodeCollapse";
-import GridRow from "@/components/Grid/GridRow";
-import GridCol from "@/components/Grid/GridCol";
+import Row from "@/components/Grid/Row";
+import Col from "@/components/Grid/Col";
 import Container from "@/components/Grid/Container";
-import ContainerContent from "@/components/Grid/ContainerContent";
+import Content from "@/components/Other/Content";
 
 export default {
   data() {
@@ -99,9 +99,9 @@ export default {
     RadioGroup,
     CodeCollapse,
     Container,
-    ContainerContent,
-    GridRow,
-    GridCol
+    Content,
+    Row,
+    Col
   }
 };
 </script>

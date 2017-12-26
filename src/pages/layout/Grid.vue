@@ -1,66 +1,66 @@
 <template>
   <Container>
     <h4>基础栅格</h4>
-    <p>水平排列,Grid-Row GridCol既可以构建一个栅格系统</p>
-    <GridRow class="row-margin">
-      <GridCol :span="12">
-        <div class="content">col-12</div>
-      </GridCol>
-    </GridRow>
-    <GridRow class="row-margin">
-      <GridCol :span="6">
-        <div class="content">col-6</div>
-      </GridCol>
-      <GridCol :span="6">
-        <div class="content">col-6</div>
-      </GridCol>
-    </GridRow>
-    <GridRow class="row-margin">
-      <GridCol :span="3">
-        <div class="content">col-3</div>
-      </GridCol>
-      <GridCol :span="3">
-        <div class="content">col-3</div>
-      </GridCol>
-      <GridCol :span="3">
-        <div class="content">col-3</div>
-      </GridCol>
-      <GridCol :span="3">
-        <div class="content">col-3</div>
-      </GridCol>
-    </GridRow>
+    <p>水平排列,Row Col</p>
+    <Row class="row-margin">
+      <Col :span="12" class="content">
+        <div>col-12</div>
+      </Col>
+    </Row>
+    <Row class="row-margin">
+      <Col :span="6" class="content">
+        <div>col-6</div>
+      </Col>
+      <Col :span="6" class="content">
+        <div>col-6</div>
+      </Col>
+    </Row>
+    <Row class="row-margin">
+      <Col :span="3" class="content">
+        <div>col-3</div>
+      </Col>
+      <Col :span="3" class="content">
+        <div>col-3</div>
+      </Col>
+      <Col :span="3" class="content">
+        <div>col-3</div>
+      </Col>
+      <Col :span="3" class="content">
+        <div>col-3</div>
+      </Col>
+    </Row>
     <h2>区块间隔</h2>
-    <GridRow>
-      <GridCol :span="4">
-        <div class="content">gutter-10</div>
-      </GridCol>
-      <GridCol :span="4">
-        <div class="content">gutter-10</div>
-      </GridCol>
-      <GridCol :span="4">
-        <div class="content">gutter-10</div>
-      </GridCol>
-    </GridRow>
+    <Row>
+      <Col :span="4" class="content">
+        <div>gutter-10</div>
+      </Col>
+      <Col :span="4" class="content">
+        <div>gutter-10</div>
+      </Col>
+      <Col :span="4" class="content">
+        <div>gutter-10</div>
+      </Col>
+    </Row>
     <h2>左右偏移</h2>
-     <GridRow >
-      <GridCol :span="12" :offset="12">
-        <div class="content">col-offset-12</div>
-      </GridCol>
-    </GridRow>
+     <Row >
+      <Col :span="12" :offset="12" class="content">
+        <div>col-offset-12</div>
+      </Col>
+    </Row>
     <h2>栅格排序</h2>
     <h2>Flex布局</h2>
   </Container>
 </template>
 
 <script>
-import GridRow from "@/components/Grid/GridRow";
-import GridCol from "@/components/Grid/GridCol";
+import Row from "@/components/Grid/Row";
+import Col from "@/components/Grid/Col";
 import Container from "@/components/Grid/Container";
 
 export default {
   components: {
-    GridRow,
-    GridCol,
+    Row,
+    Col,
     Container
   }
 };
@@ -68,8 +68,8 @@ export default {
 
 
 <style lang="less" scoped>
-.row-margin{
-  margin-top: 10px;
+.row-margin {
+  margin-bottom: 10px;
 }
 .content {
   background-color: rgba(0, 160, 233, 0.7);
