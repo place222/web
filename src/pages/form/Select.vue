@@ -1,64 +1,78 @@
 <template>
-  <div class="container">
-    <Select v-model="selectValue">
-      <Option value="1">呵呵1</Option>
-      <Option value="2">呵呵2</Option>
-      <Option value="3">呵呵3</Option>
-      <Option value="4">呵呵3</Option>
-      <Option value="5">呵呵3</Option>
-      <Option value="6">呵呵3</Option>
-      <Option value="7">呵呵3</Option>
-      <Option value="8">呵呵3</Option>
-      <Option value="9">呵呵3</Option>
-      <Option value="0">呵呵3</Option>
-      <Option value="10">呵呵3</Option>
-      <Option value="11">呵呵3</Option>
-      <Option value="12">呵呵3</Option>
-      <Option value="13">呵呵3</Option>
-    </Select>
-    <p>{{selectValue}}</p>
-  </div>
+  <Container>
+    <Row>
+      <Col>
+      <h4>select</h4>
+        <Content>
+          <Select v-model="selectValue">
+            <Option value="1">呵呵1</Option>
+            <Option value="2">呵呵2</Option>
+            <Option value="3">呵呵3</Option>
+            <Option value="4">呵呵3</Option>
+            <Option value="5">呵呵3</Option>
+            <Option value="6">呵呵3</Option>
+            <Option value="7">呵呵3</Option>
+            <Option value="8">呵呵3</Option>
+            <Option value="9">呵呵3</Option>
+            <Option value="0">呵呵3</Option>
+            <Option value="10">呵呵3</Option>
+            <Option value="11">呵呵3</Option>
+            <Option value="12">呵呵3</Option>
+            <Option value="13">呵呵3</Option>
+        </Select>
+        <p>{{selectValue}}</p>
+        </Content>
+      </Col>
+    </Row>
+    <h4>说明</h4>
+    <Row>
+      <Col>
+        <Content>
+          <Table :list="list">
+            <TableCol name="参数" property="param"></TableCol>
+            <TableCol name="说明" property="desc"></TableCol>
+            <TableCol name="类型" property="type"></TableCol>
+            <TableCol name="可选值" property="options"></TableCol>
+            <TableCol name="默认值" property="default"></TableCol>
+          </Table>
+        </Content>
+      </Col>
+    </Row>
+  </Container>
+
 </template>
 
 
 <script>
+import Container from '@/components/Grid/Container'
+import Row from '@/components/Grid/Row'
+import Col from "@/components/Grid/Col"
+import Content from "@/components/Other/Content"
+
+import Table from "@/components/Data/Table/Table"
+import TableCol from "@/components/Data/Table/TableCol"
+
 import Select from "@/components/Form/Select/Select";
 import Option from "@/components/Form/Select/Option";
-import Popper from '@/components/Popper'
+
 export default {
   components: {
     Select,
     Option,
-    Popper
+    Container,
+    Row,
+    Col,
+    Content,
+    Table,
+    TableCol
   },
   data() {
     return {
       selectValue: "",
+      list:[
+        {param:'',desc:'',type:'',options:'',default:''}
+      ]
     };
-  },
-  methods:{
-    hello(){
-
-    }
   }
 };
 </script>
-
-
-<style lang="less" scoped>
-.uu{
-  border: 1px solid #ccc;
-  & > li{
-    line-height: 30px;
-  }
-}
-
-.container {
-  padding: 20px;
-}
-
-.region {
-  background: red;
-}
-
-</style>

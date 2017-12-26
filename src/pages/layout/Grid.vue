@@ -29,7 +29,7 @@
         <div>col-3</div>
       </Col>
     </Row>
-    <h2>区块间隔</h2>
+    <h4>区块间隔</h4>
     <Row>
       <Col :span="4" class="content">
         <div>gutter-10</div>
@@ -41,14 +41,19 @@
         <div>gutter-10</div>
       </Col>
     </Row>
-    <h2>左右偏移</h2>
+    <h4>左右偏移</h4>
      <Row >
       <Col :span="12" :offset="12" class="content">
         <div>col-offset-12</div>
       </Col>
     </Row>
-    <h2>栅格排序</h2>
-    <h2>Flex布局</h2>
+    <h4>栅格排序</h4>
+    <h4>Flex布局</h4>
+    <div class="con">
+        <div class="content1">1</div>
+        <div class="content1">2</div>
+        <div class="content1">3</div>
+    </div>
   </Container>
 </template>
 
@@ -68,12 +73,23 @@ export default {
 
 
 <style lang="less" scoped>
+.con {
+  display: flex;
+}
+.content1{
+    background-color: rgba(0, 160, 233, 0.7);
+  line-height: 60px;
+  min-height: 30px;
+  text-align: center;
+  color: #fff;
+  flex-grow:  1;
+}
 .row-margin {
   margin-bottom: 10px;
 }
 .content {
   background-color: rgba(0, 160, 233, 0.7);
-  line-height: 30px;
+  line-height: 60px;
   min-height: 30px;
   text-align: center;
   color: #fff;

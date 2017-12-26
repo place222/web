@@ -4,9 +4,9 @@
         <li><h2>flex用在容器上的</h2></li>
         <li>flex-direction: row | row-reverse | column | column-reverse; 排列方向</li>
         <li>flex-wrap: nowrap | wrap | wrap-reverse;换行</li>
-        <li>flex-flow: flex-direction || flex-wrap;</li>
-        <li>justify-content: flex-start | flex-end | center | space-between | space-around;</li>
-        <li>align-items: flex-start | flex-end | center | baseline | stretch;</li>
+        <li>flex-flow: flex-direction || flex-wrap; 2种综合</li>
+        <li>justify-content: flex-start 左对齐 | flex-end 右对齐 | center 居中 | space-between 2端对齐 间距相等 | space-around;围绕 主轴的对齐方式</li>
+        <li>align-items: flex-start | flex-end | center | baseline | stretch; 交叉轴的对齐方式</li>
         <li> align-content: flex-start | flex-end | center | space-between | space-around | stretch;</li>
         <li><h2>用在项目上的</h2></li>
         <li>order: integer;排序 越小越靠前</li>
