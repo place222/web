@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div :class="[
+    'form-radio-group',
+    {'form-radio-group-vertical':vertical},
+    {'form-radio-group-button':type === 'button'}
+    ]">
       <slot></slot>
   </div>
 </template>
@@ -8,11 +12,13 @@
 export default {
   componentName: "RadioGroup",
   props: {
-    value: {}
+    value: {},
+    type: [String],
+    vertical: Boolean
   },
   methods: {
     radioChange: function(val) {
-      this.$emit('input',val);
+      this.$emit("input", val);
     }
   },
   mounted: function() {

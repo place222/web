@@ -1,9 +1,9 @@
 <template>
-  <label class="radio" :class="[
-    {'is-disabled':disabled},
-    {'is-checked':isChecked}
+  <label class="form-radio" :class="[
+    {'-disabled':disabled},
+    {'-checked':isChecked}
   ]">
-    <span class="radio_circular" :class="isChecked?'checked':''" >
+    <span class="circular">
       <input type="radio"
             ref="radio"
             :name="name"
@@ -13,7 +13,7 @@
             @change="handleChange"
             />
     </span>
-    <span class="radio_text"><slot></slot></span>
+    <span class="text"><slot></slot></span>
   </label>
 </template>
 <script>
