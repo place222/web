@@ -23,20 +23,12 @@
         }
     }
     >.text {}
-    &.-checked,
-    &:hover {
-        >.circular {
-            border: @radio-circular-default-border-hover;
-        }
-        >.text {
-            color: @brand-primary;
-        }
-    }
     /**
     选中状态
     **/
     &.-checked {
         >.circular {
+            border: @radio-circular-default-border-hover;
             &:after {
                 background-color: @brand-primary;
             }
@@ -47,11 +39,7 @@
     **/
     &.-disabled {
         cursor: not-allowed;
-        color: @brand-notallowd;
-        >.circular {
-            border-color: @brand-notallowd;
-        }
-        >.text {}
+        color: @disabled-color-base;
     }
 }
 

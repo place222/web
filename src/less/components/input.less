@@ -2,16 +2,23 @@ input[type="text"] {
     width: 100%;
     min-height: @input-default-min-height;
     padding: 0 @padding-base-horizontal;
-    color: @font-color;
+    color: @content-color-base;
     box-sizing: border-box;
-    border: 1px solid @input-default-border-color;
-    border-radius: @input-default-border-radius;
+    border: @border-base;
+    border-radius: @border-radius-base;
     outline: none;
+    &:hover {
+        border-color: @brand-light-primary;
+    }
     &:focus {
-        border-color: @brand-primary;
+        border-color: @brand-dark-primary;
     }
 }
 
-input[disabled]:hover {
-    cursor: not-allowed;
+input[disabled] {
+    background-color: @background-color-base;
+    color: @disabled-color-base;
+    &:hover {
+        cursor: not-allowed;
+    }
 }

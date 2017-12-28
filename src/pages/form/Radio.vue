@@ -98,6 +98,22 @@
       </Content>
       </Col>
     </Row>
+
+    <h4>说明</h4>
+    <Row>
+      <Col>
+        <Content>
+          <Table :list="list">
+            <TableCol name="参数" property="param"></TableCol>
+            <TableCol name="说明" property="desc"></TableCol>
+            <TableCol name="类型" property="type"></TableCol>
+            <TableCol name="可选值" property="options"></TableCol>
+            <TableCol name="默认值" property="default"></TableCol>
+          </Table>
+        </Content>
+      </Col>
+    </Row>
+
   </Container>
 </template>
 
@@ -105,6 +121,9 @@
 export default {
   data() {
     return {
+      list:[
+        {param:'disabled',desc:'是否引用',type:'boolean',options:'-',default:'false'}
+      ],
       model1: null,
       model2: null,
       model3: null,

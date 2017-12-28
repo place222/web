@@ -1,13 +1,6 @@
 //基础数据
-@font-size-base : 14px;
-@font-small-size-base: 12px;
-@line-height-base : 1.4286;
-@font-color : #495060;
-@border-radius-base: 6px;
-@border-small-radius-base: 4px;
-@padding-base-vertical: 6px;
-@padding-base-horizontal: 12px;
-@border-base : 1px solid @border-color-base;
+@font-size-base : 14px; //默认字体大小
+@font-small-size-base: 12px; //
 @font-family-base: "Helvetica Neue",
 Helvetica,
 Arial,
@@ -16,31 +9,33 @@ Arial,
 "Heiti SC",
 "WenQuanYi Micro Hei",
 sans-serif;
-//颜色
-@brand-primary : #e6451e;
-@brand-success : #5cb85c;
-@brand-info : #5bc0de;
-@brand-warning : #f0ad4e;
-@brand-danger : #d9534f;
-@brand-notallowd : #ccc;
-// COLORS
-@border-color-base: #dddee1;
-@background-color-base: #fff;
-@red : #dd4b39;
-@green : #00a65a;
-@aqua : #00c0ef;
-@yellow : #f39c12;
-@blue : #0073b7;
-@navy : #001F3F;
-@teal : #39CCCC;
-@olive : #3D9970;
-@lime : #01FF70;
-@orange : #FF851B;
-@fuchsia : #F012BE;
-@purple : #605ca8;
-@maroon : #D81B60;
-@black : #111;
-@gray-lte : #d2d6de;
+
+@line-height-base : 1.4286;
+
+@border-radius-base: 6px;
+@border-small-radius-base: 4px;
+@border-base : 1px solid @border-color-base;
+
+@padding-base-vertical: 6px;
+@padding-base-horizontal: 12px;
+
+//主色
+@brand-primary : #2d8cf0; //主色调
+@brand-light-primary: #5cadff; //hover色调
+@brand-dark-primary: #2b85e4; //active色调
+//辅助色 信息提示 成功 警告 失败等
+@brand-success : #19be6b;
+@brand-info : #2d8cf0;
+@brand-warning : #ff9900;
+@brand-danger : #ed3f14;
+//中性色 文本 编辑 边框 阴影
+@title-color-base: #1c2438; //标题文字颜色
+@content-color-base: #495060; //内容文字颜色
+@sub-color-base: #80848f; //辅助 图标
+@disabled-color-base: #bbbec4; //失效时候文字的颜色
+@border-color-base: #dddee1; //边框颜色
+@divider-color-base: #e9eaec; //分割线
+@background-color-base: #f8f8f9; //背景颜色
 //定义媒体查询的各种尺寸
 @screen-xs : 480px;
 @scrren-sm : 768px;
@@ -49,14 +44,13 @@ sans-serif;
 //Grid 栅格系统
 @grid-columns : 12;
 @grid-gutter-width : 30px;
+
 //按钮
 //定义公共的盒模型的数值 基于14px 文本和1.428的行高来设置的
+@btn-font-weight: normal;
 @btn-lg-font-size: 18px;
 @btn-lg-line-height: 1.333;
 @btn-small-font-size: 12px;
-@btn-font-weight: normal;
-@btn-border-radius-base: 3px;
-@btn-default-color: #333;
 @btn-default-bg: #fff;
 @btn-default-border: #ccc;
 @btn-primary-color: #fff;
@@ -74,10 +68,9 @@ sans-serif;
 @btn-danger-color: #fff;
 @btn-danger-bg: @brand-danger;
 @btn-danger-border: darken(@btn-danger-bg, 5%);
+
 //Input
 @input-default-min-height: 35px;
-@input-default-border-color: #d8dce5;
-@input-default-border-radius: 3px;
 //表单项
 @form-item-default-margin-bottom: 20px;
 @form-item-default-line-height: 35px;
@@ -87,19 +80,3 @@ sans-serif;
 @radio-circular-after-default-size: 10px;
 @radio-circular-default-border: 1px solid @border-color-base;
 @radio-circular-default-border-hover: 1px solid @brand-primary;
-//主题
-.bg-red {
-    background-color: @red !important;
-}
-
-.bg-yellow {
-    background-color: @yellow !important;
-}
-
-.bg-aqua {
-    background-color: @aqua !important;
-}
-
-.bg-green {
-    background-color: @green !important;
-}
