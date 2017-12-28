@@ -5,7 +5,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name:"ButtonGroup"
+};
 </script>
 
 <style lang="less" scoped>

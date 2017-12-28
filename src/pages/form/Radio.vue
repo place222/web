@@ -102,14 +102,6 @@
 </template>
 
 <script>
-import Radio from "@/components/Form/Radio/Radio";
-import RadioGroup from "@/components/Form/Radio/RadioGroup";
-import CodeCollapse from "@/components/Other/CodeCollapse";
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from "@/components/Grid/Container";
-import Content from "@/components/Other/Content";
-
 export default {
   data() {
     return {
@@ -119,15 +111,6 @@ export default {
       model4: null,
       model5: null
     };
-  },
-  components: {
-    Radio,
-    RadioGroup,
-    CodeCollapse,
-    Container,
-    Content,
-    Row,
-    Col
   }
 };
 </script>

@@ -29,22 +29,8 @@
 </template>
 
 <script>
-import Input from "@/components/Form/Input/Input";
-import CodeCollapse from "@/components/Other/CodeCollapse";
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from "@/components/Grid/Container";
-import Content from "@/components/Other/Content";
 
 export default {
-  components: {
-    Input,
-    CodeCollapse,
-    Container,
-    Content,
-    Row,
-    Col
-  },
   data() {
     return {
       value1: "",

@@ -44,28 +44,8 @@
 
 
 <script>
-import Container from '@/components/Grid/Container'
-import Row from '@/components/Grid/Row'
-import Col from "@/components/Grid/Col"
-import Content from "@/components/Other/Content"
-
-import Table from "@/components/Data/Table/Table"
-import TableCol from "@/components/Data/Table/TableCol"
-
-import Select from "@/components/Form/Select/Select";
-import Option from "@/components/Form/Select/Option";
 
 export default {
-  components: {
-    Select,
-    Option,
-    Container,
-    Row,
-    Col,
-    Content,
-    Table,
-    TableCol
-  },
   data() {
     return {
       selectValue: "",

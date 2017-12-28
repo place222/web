@@ -57,21 +57,6 @@
   </Container>
 </template>
 
-<script>
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from "@/components/Grid/Container";
-
-export default {
-  components: {
-    Row,
-    Col,
-    Container
-  }
-};
-</script>
-
-
 <style lang="less" scoped>
 .con {
   display: flex;

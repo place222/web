@@ -9,8 +9,11 @@ import router from './router'
 import Message from '@/components/Notice/message/main.js'
 import Axios from 'axios'
 import './filter/DateFilter'
+import Mo from './Mo'
 
 Vue.config.productionTip = false
+
+Vue.use(Mo)
 
 Vue.prototype.$message = Message
 Vue.prototype.$http = Axios

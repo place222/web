@@ -104,25 +104,3 @@
 </Container>
 </template>
 
-<script>
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from "@/components/Grid/Container";
-import Content from "@/components/Other/Content";
-import CodeCollapse from "@/components/Other/CodeCollapse";
-import Button from "@/components/Button/Button";
-import ButtonGroup from '@/components/Button/ButtonGroup';
-
-
-export default {
-  components: {
-    Row,
-    Col,
-    Button,
-    ButtonGroup,
-    Container,
-    Content,
-    CodeCollapse
-  }
-};
-</script>

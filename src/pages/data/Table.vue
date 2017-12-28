@@ -32,28 +32,8 @@
   </Container>
 </template>
 <script>
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from "@/components/Grid/Container";
-import Content from "@/components/Other/Content";
-import CodeCollapse from "@/components/Other/CodeCollapse";
-import Table from "@/components/Data/Table/Table";
-import TableCol from "@/components/Data/Table/TableCol";
-import TableCell from "@/components/Data/Table/TableCell";
-import Button from "@/components/Button/Button";
 
 export default {
-  components: {
-    Row,
-    Col,
-    Container,
-    Content,
-    CodeCollapse,
-    Table,
-    TableCol,
-    TableCell,
-    Button
-  },
   beforeCreate() {
     var set = new Set('s','sd')
     console.log(Array.from(set))

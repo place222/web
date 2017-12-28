@@ -67,41 +67,10 @@
 
 
 <script>
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from '@/components/Grid/Container'
-import Content from '@/components/Other/Content'
-
-import CheckBox from "@/components/Form/CheckBox/CheckBox";
-import CheckBoxGroup from "@/components/Form/CheckBox/CheckBoxGroup";
-
-import Radio from "@/components/Form/Radio/Radio";
-import Input from "@/components/Form/Input/Input";
-import Select from "@/components/Form/Select/Select";
-import Option from "@/components/Form/Select/Option";
-import Button from "@/components/Button/Button";
-
-import Form from "@/components/Form/Form/Form";
-import FormItem from "@/components/Form/Form/FormItem";
 
 import AsyncValidator from "async-validator";
 
 export default {
-  components: {
-    Row,
-    Col,
-    Container,
-    Content,
-    CheckBox,
-    CheckBoxGroup,
-    Radio,
-    Select,
-    Option,
-    Input,
-    Button,
-    Form,
-    FormItem
-  },
   created: function() {
     this.$http
       .get("http://localhost:3003/region")

@@ -72,24 +72,8 @@
   </Container>
 </template>
 <script>
-import CheckBox from "@/components/Form/CheckBox/CheckBox";
-import CheckBoxGroup from "@/components/Form/CheckBox/CheckBoxGroup";
-import Row from "@/components/Grid/Row";
-import Col from "@/components/Grid/Col";
-import Container from "@/components/Grid/Container";
-import Content from "@/components/Other/Content";
-import CodeCollapse from "@/components/Other/CodeCollapse";
 
 export default {
-  components: {
-    CheckBox,
-    CheckBoxGroup,
-    CodeCollapse,
-    Row,
-    Col,
-    Container,
-    Content
-  },
   data() {
     return {
       model1: [],
