@@ -1,7 +1,7 @@
 
 
 <script>
-import Popper from "popper.js";
+import Popperjs from "popper.js";
 import debounce from "../mixins/debounce";
 import CollapseTransition from '@/mixins/transitions/collapse-transition'
 
@@ -119,7 +119,7 @@ export default {
 
       var reference = this.$refs.reference;
       var pop = this.$refs.pop;
-      if (!popInstance) popInstance = new Popper(reference, pop, popOptions);
+      if (!popInstance) popInstance = new Popperjs(reference, pop, popOptions);
     }
   }
 };
@@ -133,7 +133,7 @@ export default {
       <CollapseTransition>
         <div ref="pop" class="popper_pop" :class="arrow?'arrow__true':''" v-show="show">
           <div ref="arrow" :class="arrow?'arrow':''"></div>
-              <slot name="pop"><span></span></slot>
+              <slot name="pop"></slot>
         </div>
       </CollapseTransition>
   </div>

@@ -1,7 +1,7 @@
 # web
 > 一个adminlte的vue ui组件库
 ##
-主要是想把adminlte模板整个迁移到vue上，组件参考element-ui
+vue ui
 
 ## 构建
 
@@ -12,6 +12,9 @@ npm install
 npm run dev
 
 ## 准备加入的组件
-> 查看一下form和datepicker 是什么原因 是不是要避开冲突的命名
-> 
-> datatable
+>        console.log(`clientWidth:${t.clientWidth} clientHeight:${t.clientHeight} 去除的滚动条区域`)
+>        console.log(`offsetWidth:${t.offsetWidth} offsetHeight:${t.offsetHeight} 包含边框的宽高`)
+>        console.log(`scrollWidth:${t.scrollWidth} scrollHeight:${t.scrollHeight} 元素内容区的实际宽高度`)
+>        console.log(`clientLeft:${t.clientLeft} clientTop:${t.clientTop} 边框的宽高`)
+>        console.log(`offsetLeft:${t.offsetLeft} offsetTop:${t.offsetTop} 相对于offsetParent的偏移`)
+>        console.log(`scrollLeft:${t.scrollLeft} scrollTop:${t.scrollTop} 已经滚动的宽高，没有滚动条的时候都是0`)

@@ -17,17 +17,3 @@ export default {
   }
 };
 </script>
-
-
-
-<style lang="less" scoped>
-.option {
-  line-height: 34px;
-  padding: 0 20px;
-  box-sizing: border-box;
-  &:hover {
-    cursor: pointer;
-    background-color: #f5f7fa;
-  }
-}
-</style>
