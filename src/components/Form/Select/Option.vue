@@ -1,18 +1,43 @@
 <template>
-  <li class="option" @click.stop="handleClick"><slot></slot></li>
+  <li class="option"
+      :class="{'selected':isSelected}"
+      @click.stop="handleClick">
+    <div>
+      <slot></slot>
+      <span v-if="isSelected" style="float:right">选中了</span>
+    </div>
+  </li>
 </template>
 
 <script>
-import Emitter from '../../../mixins/emitter';
+import Emitter from "../../../mixins/emitter";
 
 export default {
-  mixins:[Emitter],
-  props:{
-    value:String
+  componentName: "Option",
+  mixins: [Emitter],
+  props: {
+    value: String
+  },
+  data() {
+    return {
+      isSelected: false
+    };
+  },
+  mounted() {
+    this.$on("select.afterSelect", this.handleAfterSelect);
   },
   methods: {
     handleClick: function() {
-      this.dispatch('Select','select-item',{text:this.$slots.default[0].text,value:this.value});
+      this.isSelected = !this.isSelected;
+      this.dispatch("Select", "select.selectedItem", {
+        text: this.$slots.default[0].text,
+        value: this.value
+      });
+    },
+    handleAfterSelect: function(val) {
+      if (this.value !== val) {
+        this.isSelected = false;
+      }
     }
   }
 };

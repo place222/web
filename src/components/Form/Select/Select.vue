@@ -1,21 +1,18 @@
 <template>
-  <div class="form_select" v-clickoutside="handleClickoutside">
+  <div class="form_select" :class="{'show':showDropdown}" v-clickoutside="handleClickoutside">
     <div class="reference" @click.stop="handleDropdown">
       <input type="hidden" :value="selectValue">
       <Icon class="arrow" name="caret-left"></Icon>
-       <div class="multi">
-          <div class="multi_item">
-            <span class="text">123</span>
-            <Icon name="times" class="cancel"></Icon>
-          </div>
-          <div class="multi_item">
-            <span class="text">123</span>
-            <Icon name="times" class="cancel"></Icon>
-          </div>
+      <div v-if="isSingle">{{selectValue}}</div>
+      <div class="multi" v-else>
+        <div class="multi_item" v-for="item in selectValue">
+          <span class="text">{{item.text}}</span>
+          <Icon name="times" class="cancel"></Icon>
         </div>
+      </div>
     </div>
     <transition name="dropdown">
-      <div class="pop" v-show="show">
+      <div class="pop" v-show="showDropdown">
         <ul>
           <slot></slot>
         </ul>
@@ -32,7 +29,8 @@ export const SELECT_TYPE = {
 };
 import clickoutside from "../../../directives/clickoutside";
 import CollapseTransition from "@/mixins/transitions/collapse-transition";
-import Icon from '@/components/Icon/Icon'
+import Icon from "@/components/Icon/Icon";
+import Emitter from "../../../mixins/emitter";
 
 export default {
   componentName: "Select",
@@ -41,6 +39,7 @@ export default {
     Icon
   },
   directives: { clickoutside },
+  mixins: [Emitter],
   props: {
     value: "",
     //多选 单选
@@ -54,44 +53,53 @@ export default {
       default: 5
     }
   },
+  computed: {
+    isMulti() {
+      return this.type === SELECT_TYPE.MULTI;
+    },
+    isSingle() {
+      return this.type === SELECT_TYPE.SINGLE;
+    }
+  },
   data() {
     return {
-      show: false,
+      showDropdown: false,
       selectValue: null
     };
   },
+  created() {
+    if (this.type === SELECT_TYPE.MULTI) this.selectValue = [];
+    else if (this.type === SELECT_TYPE.SINGLE) this.selectValue = "";
+  },
   mounted() {
-    if (Array.isArray(this.$slots.default)) {
-      let index = 1;
-      let height = 0;
-      var options = this.$slots.default.filter(v => {
-        if (
-          v.componentOptions !== undefined &&
-          v.componentOptions.tag === "Option" &&
-          index <= this.max
-        ) {
-          height += Number.parseFloat(
-            window.getComputedStyle(v.elm).lineHeight
-          );
-          index += 1;
-          return true;
-        }
-      });
-      // this.$refs.ul.style.maxHeight = height + "px";
-    }
-    this.$on("select-item", this.selectItem);
+    this.$on("select.selectedItem", this.selectItem);
   },
   methods: {
     handleDropdown() {
-      this.show = !this.show;
+      this.showDropdown = !this.showDropdown;
     },
     selectItem: function(val) {
-      if (this.type == SELECT_TYPE.SINGLE) this.show = false;
-      this.selectValue = val.text;
-      this.$emit("input", val.value);
+      if (this.type === SELECT_TYPE.SINGLE) {
+        this.showDropdown = false;
+        this.selectValue = val.text;
+        this.$emit("input", val.value);
+        this.broadcast("Option", "select.afterSelect", val.value);
+      } else if (this.type === SELECT_TYPE.MULTI) {
+        console.log(this.selectValue)
+        //继续做这个对象数组的筛选
+        if (Array.isArray(this.selectValue)) {
+          if (this.selectValue.indexOf(val) === -1) {
+            this.selectValue.push(val);
+          } else {
+            console.log("删除");
+            const index = this.selectValue.indexOf(val);
+            this.selectValue.splice(index, 1);
+          }
+        }
+      }
     },
     handleClickoutside(e) {
-      if (this.type == SELECT_TYPE.SINGLE) this.show = false;
+      this.showDropdown = false;
     }
   }
 };

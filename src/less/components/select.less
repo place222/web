@@ -4,30 +4,32 @@
         border: @border-base;
         border-radius: @border-radius-base;
         outline: none;
-        min-height: @input-default-min-height;
         cursor: pointer;
-        padding: 0 5px;
+        padding: 0 @padding-base-horizontal;
+        line-height: @select-default-line-height;
+        height: @select-default-line-height;
         >.arrow {
             position: absolute;
-            right: 8px;
+            right: @padding-base-horizontal;
             top: 50%;
-            margin-top: -9.5px;
+            margin-top: -6px;
+            transition: transform .2s ease-in-out;
         }
     }
     .pop {
-        position: absolute;
         z-index: 1;
-        width: 100%;
-        background: #fff;
-        margin: 5px 0;
-        padding: 5px 0;
-        border-radius: 2px;
-        box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+        position: absolute;
         overflow: auto;
-        max-height: 200px;
+        width: 100%;
+        background: @select-default-background;
+        margin: @margin-base-vertical 0;
+        padding: @padding-base-vertical 0;
+        border-radius: @border-small-radius-base;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+        max-height: @select-default-max-height;
         >ul>li {
-            line-height: 30px;
-            padding: 6px 12px;
+            line-height: @line-height-base;
+            padding: @padding-base;
         } //箭头
         >.arrow {
             border-left: 5px solid transparent;
@@ -41,24 +43,35 @@
         }
     }
     .option {
-        line-height: 34px;
         padding: 0 20px;
         box-sizing: border-box;
         &:hover {
             cursor: pointer;
             background-color: #f5f7fa;
         }
+        &.selected {
+            background: @brand-dark-primary;
+            color: #fff;
+        }
     }
     .multi {
         >.multi_item {
             background: #f7f7f7;
-            margin: 6px 0;
             padding: 0 6px;
             display: inline-block;
             border: @border-base;
+            box-sizing: border-box;
             >.cancel {
                 color: red;
             }
+        }
+    }
+}
+
+.form_select.show {
+    .reference {
+        >.arrow {
+            transform: rotate(-90deg)
         }
     }
 }

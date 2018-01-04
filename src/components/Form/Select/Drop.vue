@@ -41,7 +41,8 @@ export default {
     },
     destroy(){
       if(this.popper){
-
+        this.popper.destroy();
+        this.popper = null;
       }
     }
   }
