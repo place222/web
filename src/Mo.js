@@ -1,7 +1,7 @@
 import {Button, ButtonGroup} from './components/Button'
 import {Table, TableCell, TableCol} from './components/Data/Table'
 import {Container, Row, Col} from './components/Grid'
-import {CheckBox, CheckBoxGroup, Form, FormItem, Input, Radio, RadioGroup, Select, Option} from './components/Form'
+import {CheckBox, CheckBoxGroup, Form, FormItem, Input, Radio, RadioGroup, Select, Option, OptionGroup} from './components/Form'
 import {CodeCollapse, CodeSnippet, Content, Affix} from './components/Other'
 
 const components = {
@@ -22,6 +22,7 @@ const components = {
   RadioGroup,
   Select,
   Option,
+  OptionGroup,
   CodeCollapse,
   CodeSnippet,
   Content,

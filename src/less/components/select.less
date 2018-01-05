@@ -10,14 +10,14 @@
         line-height: @select-default-line-height;
         height: @select-default-line-height;
         >.placeholder {}
-        >.clear{
-          position: absolute;
-          right: 9px;
-          top: 50%;
-          margin-top: -6px;
-          width: 12px;
-          height: 12px;
-          background: red;
+        >.clear {
+            position: absolute;
+            right: 9px;
+            top: 50%;
+            margin-top: -6px;
+            &:hover {
+                color: @disabled-color-base;
+            }
         }
         >.arrow {
             position: absolute;
@@ -51,13 +51,21 @@
     }
     .multi {
         >.multi_item {
-            background: #f7f7f7;
+            height: 20px;
+            line-height: 20px;
+            background: @brand-primary;
+            color: #fff;
+            font-weight: bold;
             padding: 0 6px;
+            margin: 0 2px;
             display: inline-block;
-            border: @border-base;
             box-sizing: border-box;
+            border-radius: @border-small-radius-base;
             >.cancel {
-                color: red;
+                color: #fff;
+                &:hover {
+                    color: darken(#fff, 10%);
+                }
             }
         }
     }
@@ -88,7 +96,7 @@
     color: @color-disabled-base;
     cursor: not-allowed;
     &:hover {
-      background-color: #fff;
+        background-color: #fff;
     }
     &.selected {}
 }
@@ -97,6 +105,29 @@
     .reference {
         >.arrow {
             transform: rotate(-90deg)
+        }
+    }
+}
+
+.form_select .group_wrap {
+    .title {
+        padding-left: 8px;
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        color: #ccc;
+    }
+    .option {
+        box-sizing: border-box;
+        line-height: @line-height-base;
+        padding: @padding-base;
+        font-size: 12px;
+        &:hover {
+            background-color: #f5f7fa;
+        }
+        &.selected {
+            background: @brand-dark-primary;
+            color: #fff;
         }
     }
 }

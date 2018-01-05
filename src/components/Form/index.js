@@ -7,7 +7,7 @@ import Radio from './Radio/Radio.vue'
 import RadioGroup from './Radio/RadioGroup'
 import Select from './Select/Select.vue'
 import Option from './Select/Option.vue'
-
+import OptionGroup from './Select/OptionGroup.vue'
 
 
 export {
@@ -19,5 +19,6 @@ export {
   Radio,
   RadioGroup,
   Select,
-  Option
+  Option,
+  OptionGroup
 }

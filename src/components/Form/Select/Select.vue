@@ -6,13 +6,13 @@
     <div class="reference" @click.stop="handleDropdown">
       <input type="hidden" :value="selectValue">
       <Icon class="arrow" name="caret-left"></Icon>
-      <div class="clear" v-show="clearableShow" @click.stop="handleClear"></div>
-      <div class="placeholder" v-show="placeHolderShow">{{placeholder}}</div>
-      <div v-if="isSingle">{{selectValue}}</div>
+      <Icon class="clear" name="times" v-show="isClearable" @click.native.stop="handleClear"></Icon>
+      <div class="placeholder" v-show="isPlaceHolder">{{placeholder}}</div>
+      <div v-if="isSingle">{{selectValue?selectValue.text:''}}</div>
       <div class="multi" v-else>
         <div class="multi_item" v-for="item in selectValue">
           <span class="text">{{item.text}}</span>
-          <Icon name="times" class="cancel"></Icon>
+          <Icon name="times" class="cancel" @click.native.stop="handleRemoveItem(item)"></Icon>
         </div>
       </div>
     </div>
@@ -28,25 +28,25 @@
 
 
 <script>
-export const SELECT_TYPE = {
-  SINGLE: "single",
-  MULTI: "multi"
-};
+import { SELECT_TYPE } from "./core";
 import clickoutside from "../../../directives/clickoutside";
-import CollapseTransition from "@/mixins/transitions/collapse-transition";
 import Icon from "@/components/Icon/Icon";
 import Emitter from "../../../mixins/emitter";
 
 export default {
   componentName: "Select",
   components: {
-    CollapseTransition,
     Icon
   },
   directives: { clickoutside },
   mixins: [Emitter],
+  provide() {
+    return {
+      type: this.type
+    };
+  },
   props: {
-    value: "",
+    value: "", //v-model绑定进来的值
     //多选 单选
     type: {
       type: String,
@@ -77,10 +77,10 @@ export default {
     isSingle() {
       return this.type === SELECT_TYPE.SINGLE;
     },
-    placeHolderShow() {
+    isPlaceHolder() {
       return !this.selectValue;
     },
-    clearableShow() {
+    isClearable() {
       return this.selectValue && this.clearable;
     }
   },
@@ -104,28 +104,20 @@ export default {
       this.showDropdown = !this.showDropdown;
     },
     unSelectItem: function(val) {
-      if (this.type === SELECT_TYPE.MULTI) {
-        if (Array.isArray(this.selectValue)) {
-          for (let i = 0; i < this.selectValue.length; i++) {
-            if (this.selectValue[i].value === val.value) {
-              this.selectValue.splice(i, 1);
-            }
-          }
-        }
-      }
+      this._removeItem(val);
     },
     selectItem: function(val) {
       if (this.type === SELECT_TYPE.SINGLE) {
         this.showDropdown = false;
-        this.selectValue = val.text;
+        this.selectValue = val;
         this.broadcast("Option", "select.afterSelectItem", val);
+        this.$emit("input", val.value);
       } else if (this.type === SELECT_TYPE.MULTI) {
-        //继续做这个对象数组的筛选
         if (Array.isArray(this.selectValue)) {
           this.selectValue.push(val);
+          this.$emit('input',this.selectValue.map((val)=>val.value));
         }
       }
-      this.$emit("input", val.value);
     },
     handleClickoutside(e) {
       this.showDropdown = false;
@@ -137,6 +129,21 @@ export default {
         this.selectValue = null;
       }
       this.$emit("input", this.selectValue);
+    },
+    handleRemoveItem(val) {
+      this._removeItem(val);
+    },
+    _removeItem(val) {
+      if (this.type === SELECT_TYPE.MULTI) {
+        if (Array.isArray(this.selectValue)) {
+          for (let i = 0; i < this.selectValue.length; i++) {
+            if (this.selectValue[i].value === val.value) {
+              this.selectValue.splice(i, 1);
+            }
+          }
+          this.$emit("input", this.selectValue.map((val)=>val.value));
+        }
+      }
     }
   }
 };

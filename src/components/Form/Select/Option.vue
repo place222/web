@@ -11,10 +11,12 @@
 
 <script>
 import Emitter from "../../../mixins/emitter";
+import {SELECT_TYPE} from './core'
 
 export default {
   componentName: "Option",
   mixins: [Emitter],
+  inject: ["type"],
   props: {
     value: String,
     disabled: {
@@ -42,6 +44,7 @@ export default {
         text: this.$slots.default[0].text,
         value: this.value
       };
+      if (this.isSelected && this.type === SELECT_TYPE.SINGLE) return;
       if (this.isSelected) {
         this.isSelected = false;
         this.dispatch("Select", "select.unSelectedItem", select);

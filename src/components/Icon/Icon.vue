@@ -1,6 +1,6 @@
 
 <template>
-  <i :class="['fa','fa-'+name,'fa-lg']"></i>
+  <i :class="['fa','fa-'+name]"></i>
 </template>
 
 <script>

@@ -93,6 +93,24 @@
         </Content>
       </Col>
     </Row>
+    <Row>
+      <Col>
+      <h4>分组</h4>
+        <Content>
+          <Select v-model="multiValues">
+            <OptionGroup>
+              <Option value="1">呵呵1</Option>
+              <Option value="2">呵呵2</Option>
+            </OptionGroup>
+            <OptionGroup>
+              <Option value="4">呵呵34</Option>
+              <Option value="3">呵呵3</Option>
+            </OptionGroup>
+          </Select>
+        <p>{{multiValues}}</p>
+        </Content>
+      </Col>
+    </Row>
     <h4>说明</h4>
     <Row>
       <Col>
@@ -123,6 +141,11 @@ export default {
         {param:'',desc:'',type:'',options:'',default:''}
       ]
     };
+  },
+  watch:{
+    multiValues(){
+      console.log(this.multiValues)
+    }
   }
 };
 </script>
