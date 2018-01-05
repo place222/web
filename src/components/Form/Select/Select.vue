@@ -1,8 +1,13 @@
 <template>
-  <div class="form_select" :class="{'show':showDropdown}" v-clickoutside="handleClickoutside">
+  <div
+    class="form_select"
+    :class="[{'show':showDropdown},{'disabled':disabled}]"
+    v-clickoutside="handleClickoutside">
     <div class="reference" @click.stop="handleDropdown">
       <input type="hidden" :value="selectValue">
       <Icon class="arrow" name="caret-left"></Icon>
+      <div class="clear" v-show="clearableShow" @click.stop="handleClear"></div>
+      <div class="placeholder" v-show="placeHolderShow">{{placeholder}}</div>
       <div v-if="isSingle">{{selectValue}}</div>
       <div class="multi" v-else>
         <div class="multi_item" v-for="item in selectValue">
@@ -51,6 +56,18 @@ export default {
     max: {
       type: Number,
       default: 5
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    clearable: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: "请选择"
     }
   },
   computed: {
@@ -59,6 +76,12 @@ export default {
     },
     isSingle() {
       return this.type === SELECT_TYPE.SINGLE;
+    },
+    placeHolderShow() {
+      return !this.selectValue;
+    },
+    clearableShow() {
+      return this.selectValue && this.clearable;
     }
   },
   data() {
@@ -73,33 +96,47 @@ export default {
   },
   mounted() {
     this.$on("select.selectedItem", this.selectItem);
+    this.$on("select.unSelectedItem", this.unSelectItem);
   },
   methods: {
     handleDropdown() {
+      if (this.disabled) return;
       this.showDropdown = !this.showDropdown;
+    },
+    unSelectItem: function(val) {
+      if (this.type === SELECT_TYPE.MULTI) {
+        if (Array.isArray(this.selectValue)) {
+          for (let i = 0; i < this.selectValue.length; i++) {
+            if (this.selectValue[i].value === val.value) {
+              this.selectValue.splice(i, 1);
+            }
+          }
+        }
+      }
     },
     selectItem: function(val) {
       if (this.type === SELECT_TYPE.SINGLE) {
         this.showDropdown = false;
         this.selectValue = val.text;
-        this.$emit("input", val.value);
-        this.broadcast("Option", "select.afterSelect", val.value);
+        this.broadcast("Option", "select.afterSelectItem", val);
       } else if (this.type === SELECT_TYPE.MULTI) {
-        console.log(this.selectValue)
         //继续做这个对象数组的筛选
         if (Array.isArray(this.selectValue)) {
-          if (this.selectValue.indexOf(val) === -1) {
-            this.selectValue.push(val);
-          } else {
-            console.log("删除");
-            const index = this.selectValue.indexOf(val);
-            this.selectValue.splice(index, 1);
-          }
+          this.selectValue.push(val);
         }
       }
+      this.$emit("input", val.value);
     },
     handleClickoutside(e) {
       this.showDropdown = false;
+    },
+    handleClear() {
+      if (Array.isArray(this.selectValue)) {
+        this.selectValue = [];
+      } else {
+        this.selectValue = null;
+      }
+      this.$emit("input", this.selectValue);
     }
   }
 };

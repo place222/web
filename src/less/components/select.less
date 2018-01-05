@@ -1,5 +1,6 @@
 .form_select {
     position: relative;
+    color: @content-color-base;
     .reference {
         border: @border-base;
         border-radius: @border-radius-base;
@@ -8,6 +9,16 @@
         padding: 0 @padding-base-horizontal;
         line-height: @select-default-line-height;
         height: @select-default-line-height;
+        >.placeholder {}
+        >.clear{
+          position: absolute;
+          right: 9px;
+          top: 50%;
+          margin-top: -6px;
+          width: 12px;
+          height: 12px;
+          background: red;
+        }
         >.arrow {
             position: absolute;
             right: @padding-base-horizontal;
@@ -26,11 +37,7 @@
         padding: @padding-base-vertical 0;
         border-radius: @border-small-radius-base;
         box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
-        max-height: @select-default-max-height;
-        >ul>li {
-            line-height: @line-height-base;
-            padding: @padding-base;
-        } //箭头
+        max-height: @select-default-max-height; //箭头
         >.arrow {
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
@@ -40,18 +47,6 @@
             position: absolute;
             right: 50%;
             top: -5px;
-        }
-    }
-    .option {
-        padding: 0 20px;
-        box-sizing: border-box;
-        &:hover {
-            cursor: pointer;
-            background-color: #f5f7fa;
-        }
-        &.selected {
-            background: @brand-dark-primary;
-            color: #fff;
         }
     }
     .multi {
@@ -66,6 +61,36 @@
             }
         }
     }
+}
+
+.form_select.disabled {
+    background: @background-color-disabled-base;
+    .reference {
+        cursor: not-allowed;
+    }
+}
+
+.form_select .option {
+    box-sizing: border-box;
+    line-height: @line-height-base;
+    padding: @padding-base;
+    cursor: pointer;
+    &:hover {
+        background-color: #f5f7fa;
+    }
+    &.selected {
+        background: @brand-dark-primary;
+        color: #fff;
+    }
+}
+
+.form_select .option.disabled {
+    color: @color-disabled-base;
+    cursor: not-allowed;
+    &:hover {
+      background-color: #fff;
+    }
+    &.selected {}
 }
 
 .form_select.show {

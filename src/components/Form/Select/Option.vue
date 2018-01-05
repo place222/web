@@ -1,6 +1,6 @@
 <template>
   <li class="option"
-      :class="{'selected':isSelected}"
+      :class="[{'selected':isSelected},{'disabled':disabled}]"
       @click.stop="handleClick">
     <div>
       <slot></slot>
@@ -16,7 +16,11 @@ export default {
   componentName: "Option",
   mixins: [Emitter],
   props: {
-    value: String
+    value: String,
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -24,19 +28,26 @@ export default {
     };
   },
   mounted() {
-    this.$on("select.afterSelect", this.handleAfterSelect);
+    this.$on("select.afterSelectItem", this.afterSelectItem);
   },
   methods: {
+    afterSelectItem(val) {
+      if (this.isSelected && val.value !== this.value) {
+        this.isSelected = false;
+      }
+    },
     handleClick: function() {
-      this.isSelected = !this.isSelected;
-      this.dispatch("Select", "select.selectedItem", {
+      if (this.disabled) return;
+      const select = {
         text: this.$slots.default[0].text,
         value: this.value
-      });
-    },
-    handleAfterSelect: function(val) {
-      if (this.value !== val) {
+      };
+      if (this.isSelected) {
         this.isSelected = false;
+        this.dispatch("Select", "select.unSelectedItem", select);
+      } else {
+        this.isSelected = true;
+        this.dispatch("Select", "select.selectedItem", select);
       }
     }
   }
